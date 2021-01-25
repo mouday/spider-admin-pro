@@ -5,7 +5,7 @@ __pycache__
 *.db
 build/
 dist/
-spideradmin.egg-info/
+*.egg-info/
 *.log
 *.db-shm
 *.db-wal
