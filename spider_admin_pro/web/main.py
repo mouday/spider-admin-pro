@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from spider_admin_pro.lib.flask_app.flask_app import BlueprintApp
+from spider_admin_pro.flask_app import BlueprintApp
 
 from flask import send_file
 

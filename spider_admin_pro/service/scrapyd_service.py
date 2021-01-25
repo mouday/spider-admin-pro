@@ -2,8 +2,7 @@
 import json
 
 from spider_admin_pro.config import SCRAPYD_SERVER
-from spider_admin_pro.lib.scrapyd_api import ScrapydClient
-from spider_admin_pro.logger import Logger
+from scrapyd_api import ScrapydClient
 from spider_admin_pro.model.history import HistoryModel
 
 client = ScrapydClient(base_url=SCRAPYD_SERVER)
@@ -35,23 +34,20 @@ class ScrapydService(object):
         try:
             res = client.schedule(project=project, spider=spider, **opts)
             spider_job_id = res['jobid']
-
-            HistoryModel.insert_row(
-                project=project,
-                spider=spider,
-                schedule_job_id=schedule_job_id,
-                spider_job_id=spider_job_id,
-                options=options
-            )
+            message = ''
 
         except Exception as e:
-            HistoryModel.insert_row(
-                project=project,
-                spider=spider,
-                schedule_job_id=schedule_job_id,
-                options=options,
-                message=str(e)
-            )
+            message = str(e)
+            spider_job_id = ''
+
+        HistoryModel.insert_row(
+            project=project,
+            spider=spider,
+            schedule_job_id=schedule_job_id,
+            spider_job_id=spider_job_id,
+            options=options,
+            message=message
+        )
 
 
 if __name__ == '__main__':

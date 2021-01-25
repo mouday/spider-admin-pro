@@ -4,10 +4,10 @@
 # ==============================================
 from flask import request
 
-from spider_admin_pro.lib.flask_app.flask_app import BlueprintAppApi
-from spider_admin_pro.service.auth import AuthService
-from spider_admin_pro.service.system_data import SystemDataService
-from spider_admin_pro.service.system_info import SystemInfoService
+from spider_admin_pro.flask_app import BlueprintAppApi
+from spider_admin_pro.service.auth_service import AuthService
+from spider_admin_pro.service.system_data_service import SystemDataService
+
 
 system_api = BlueprintAppApi("system", __name__)
 
@@ -20,7 +20,7 @@ def before_request():
 
 @system_api.post('/systemInfo')
 def get_system_info():
-    return SystemInfoService.get_system_info()
+    return SystemDataService.get_system_info()
 
 
 @system_api.post("/systemData")

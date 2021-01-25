@@ -3,19 +3,14 @@
 import logging
 
 from peewee import *
+from playhouse.db_url import connect, register_database
 from playhouse.shortcuts import ReconnectMixin
 from playhouse.sqliteq import SqliteQueueDatabase
 
-from spider_admin_pro.config import (
-    SCHEDULE_DATABASE_SCHEME,
-    SCHEDULE_DATABASE_NAME,
-    SCHEDULE_DATABASE_USER,
-    SCHEDULE_DATABASE_PASSWORD,
-    SCHEDULE_DATABASE_HOST,
-    SCHEDULE_DATABASE_PORT
-)
-
+from spider_admin_pro.config import SCHEDULE_HISTORY_DATABASE_URL
 # 显示查询日志
+from spider_admin_pro.utils.sqlite_util import make_sqlite_dir
+
 logger = logging.getLogger('peewee')
 logger.setLevel(logging.DEBUG)
 logger.addHandler(logging.StreamHandler())
@@ -29,19 +24,11 @@ class ReconnectMySQLDatabase(ReconnectMixin, MySQLDatabase):
     pass
 
 
-if SCHEDULE_DATABASE_SCHEME == 'sqlite':
-    db = ReconnectSqliteDatabase(database=SCHEDULE_DATABASE_NAME)
+register_database(ReconnectSqliteDatabase, 'sqlite')
+register_database(ReconnectMySQLDatabase, 'mysql')
 
-elif SCHEDULE_DATABASE_SCHEME == 'mysql':
-    db = ReconnectMySQLDatabase(
-        database=SCHEDULE_DATABASE_NAME,
-        user=SCHEDULE_DATABASE_USER,
-        password=SCHEDULE_DATABASE_PASSWORD,
-        host=SCHEDULE_DATABASE_HOST,
-        port=SCHEDULE_DATABASE_PORT
-    )
-else:
-    raise Exception('not support database scheme')
+make_sqlite_dir(SCHEDULE_HISTORY_DATABASE_URL)
+db = connect(url=SCHEDULE_HISTORY_DATABASE_URL)
 
 
 class BaseModel(Model):

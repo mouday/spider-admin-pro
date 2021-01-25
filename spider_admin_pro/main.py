@@ -2,11 +2,11 @@
 from flask import request, make_response
 from flask_cors import CORS
 
-from spider_admin_pro.api.auth import auth_api
-from spider_admin_pro.api.schedule import schedule_api
-from spider_admin_pro.api.scrapyd import scrapyd_api
-from spider_admin_pro.api.system_info import system_api
-from spider_admin_pro.lib.flask_app.flask_app import FlaskApp
+from spider_admin_pro.api.auth_api import auth_api
+from spider_admin_pro.api.schedule_api import schedule_api
+from spider_admin_pro.api.scrapyd_api import scrapyd_api
+from spider_admin_pro.api.system_info_api import system_api
+from spider_admin_pro.flask_app import FlaskApp
 from spider_admin_pro.web.main import web
 
 app = FlaskApp(__name__, static_folder=None)

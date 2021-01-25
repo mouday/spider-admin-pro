@@ -7,7 +7,7 @@ from flask.json import JSONEncoder
 from peewee import ModelSelect
 
 from spider_admin_pro.exceptions.api_exception import ApiException
-from spider_admin_pro.lib.flask_app.api_result import ApiResult
+from spider_admin_pro.api_result import ApiResult
 from collections import Iterable, Iterator
 
 

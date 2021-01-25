@@ -5,8 +5,8 @@
 """
 from flask import request
 
-from spider_admin_pro.lib.flask_app.flask_app import BlueprintAppApi
-from spider_admin_pro.service.auth import AuthService
+from spider_admin_pro.flask_app import BlueprintAppApi
+from spider_admin_pro.service.auth_service import AuthService
 
 auth_api = BlueprintAppApi("auth", __name__)
 

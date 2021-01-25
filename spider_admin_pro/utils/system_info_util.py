@@ -2,14 +2,7 @@
 import psutil
 
 
-class SystemInfoService(object):
-    @classmethod
-    def get_system_info(cls):
-        return {
-            'virtual_memory': cls.get_virtual_memory(),
-            'disk_usage': cls.get_disk_usage(),
-            # 'net_io_counters': cls.get_net_io_counters(),
-        }
+class SystemInfoUtil(object):
 
     @classmethod
     def get_format_byte(cls, value):
@@ -27,17 +20,17 @@ class SystemInfoService(object):
         else:
             return f'{round(b)}B'
 
-    # 内存使用情况
     @classmethod
     def get_virtual_memory(cls):
-        # total: 总内存
-        #
-        # available: 可用内存
-        #
-        # percent: 内存使用率
-        #
-        # used: 已使用的内存
+        """
+        内存使用情况
 
+        total:     总内存
+        available: 可用内存
+        percent:   内存使用率
+        used:      已使用的内存
+        :return:
+        """
         virtual_memory = psutil.virtual_memory()
 
         return {
@@ -50,9 +43,9 @@ class SystemInfoService(object):
             'used_format': cls.get_format_byte(virtual_memory.used),
         }
 
-    # 磁盘使用情况
     @classmethod
     def get_disk_usage(cls):
+        """磁盘使用情况"""
         disk_usage = psutil.disk_usage('/')
         return {
             'total': disk_usage.total,
@@ -66,18 +59,21 @@ class SystemInfoService(object):
 
     @classmethod
     def get_net_io_counters(cls):
-        # 查看网卡的网络 IO 统计信息
-        snetio = psutil.net_io_counters()
-        # print(snetio)
+        """
+        查看网卡的网络 IO 统计信息
 
-        # bytes_sent: 发送的字节数
-        # bytes_recv: 接收的字节数
-        # packets_sent: 发送的包数据量
-        # packets_recv: 接收的包数据量
-        # errin: 接收包时, 出错的次数
-        # errout: 发送包时, 出错的次数
-        # dropin: 接收包时, 丢弃的次数
-        # dropout: 发送包时, 丢弃的次数
+        bytes_sent: 发送的字节数
+        bytes_recv: 接收的字节数
+        packets_sent: 发送的包数据量
+        packets_recv: 接收的包数据量
+        errin: 接收包时, 出错的次数
+        errout: 发送包时, 出错的次数
+        dropin: 接收包时, 丢弃的次数
+        dropout: 发送包时, 丢弃的次数
+
+        """
+        snetio = psutil.net_io_counters()
+
         return {
             'bytes_sent': snetio.bytes_sent,
             'bytes_sent_format': cls.get_format_byte(snetio.bytes_sent),
@@ -87,7 +83,6 @@ class SystemInfoService(object):
 
 
 if __name__ == '__main__':
-    print(SystemInfoService.get_net_io_counters())
-
-    print(SystemInfoService.get_virtual_memory())
-    print(SystemInfoService.get_disk_usage())
+    print(SystemInfoUtil.get_net_io_counters())
+    print(SystemInfoUtil.get_virtual_memory())
+    print(SystemInfoUtil.get_disk_usage())

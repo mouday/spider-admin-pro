@@ -5,9 +5,11 @@ import uuid
 from apscheduler.jobstores.sqlalchemy import SQLAlchemyJobStore
 from apscheduler.schedulers.background import BackgroundScheduler
 
+from spider_admin_pro.config import APSCHEDULER_DATABASE_URL
 from spider_admin_pro.logger import Logger
 from spider_admin_pro.model.history import HistoryModel
 from spider_admin_pro.service.scrapyd_service import ScrapydService
+from spider_admin_pro.utils.sqlite_util import make_sqlite_dir
 
 logger = Logger.get_logger('apscheduler')
 
@@ -15,8 +17,10 @@ logger = Logger.get_logger('apscheduler')
 # 调度器服务配置
 # ==============================================
 
+make_sqlite_dir(APSCHEDULER_DATABASE_URL)
+
 JOBSTORES = {
-    'default': SQLAlchemyJobStore(url='sqlite:///apscheduler.sqlite')
+    'default': SQLAlchemyJobStore(url=APSCHEDULER_DATABASE_URL)
 }
 
 JOB_DEFAULTS = {
@@ -29,7 +33,7 @@ scheduler = BackgroundScheduler(jobstores=JOBSTORES, job_defaults=JOB_DEFAULTS)
 scheduler.start()
 
 
-class SchedulerService(object):
+class ScheduleService(object):
 
     @classmethod
     def add_job(cls, project, spider, cron, job_id=None, options=None):

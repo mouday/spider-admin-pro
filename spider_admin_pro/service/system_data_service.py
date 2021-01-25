@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 
-from spider_admin_pro.api.schedule import scheduler
-from spider_admin_pro.api.scrapyd import client
+
 from spider_admin_pro.config import SCRAPYD_SERVER
-import traceback
+from spider_admin_pro.service.schedule_service import scheduler
+from spider_admin_pro.service.scrapyd_service import client
+from spider_admin_pro.utils.system_info_util import SystemInfoUtil
 
 
 class SystemDataService(object):
@@ -62,4 +63,12 @@ class SystemDataService(object):
                 'status': status
             }
 
+        }
+
+    @classmethod
+    def get_system_info(cls):
+        return {
+            'virtual_memory': SystemInfoUtil.get_virtual_memory(),
+            'disk_usage': SystemInfoUtil.get_disk_usage(),
+            # 'net_io_counters': cls.get_net_io_counters(),
         }

@@ -5,15 +5,15 @@
 
 from flask import request
 
-from spider_admin_pro.lib.flask_app.flask_app import BlueprintAppApi
-from spider_admin_pro.lib.scheduler.scheduler_util import SchedulerUtil
-from spider_admin_pro.model.history import HistoryModel
-from spider_admin_pro.service.auth import AuthService
-from spider_admin_pro.service.scheduler_service import SchedulerService, scheduler
+from spider_admin_pro.flask_app import BlueprintAppApi
+from spider_admin_pro.utils.scheduler_util import SchedulerUtil
+from spider_admin_pro.service.auth_service import AuthService
+from spider_admin_pro.service.schedule_service import ScheduleService, scheduler
 
 schedule_api = BlueprintAppApi(name="schedule", import_name=__name__)
 
 
+# 权限校验
 @schedule_api.before_request
 def before_request():
     token = request.headers.get('Token')
@@ -47,7 +47,7 @@ def add_job():
     job_id = request.json.get('job_id')
     options = request.json.get('options')
 
-    SchedulerService.add_job(
+    ScheduleService.add_job(
         project=project, spider=spider, cron=cron,
         options=options, job_id=job_id
     )
@@ -137,12 +137,16 @@ def schedule_logs():
     schedule_job_id = request.json.get("schedule_job_id")
 
     return {
-        'list': SchedulerService.get_log_list(page=page, size=size, status=status, project=project, spider=spider,
-                                              schedule_job_id=schedule_job_id),
-        'total': SchedulerService.get_log_total_count(project=project, spider=spider, schedule_job_id=schedule_job_id),
-        'success': SchedulerService.get_log_success_count(project=project, spider=spider,
-                                                          schedule_job_id=schedule_job_id),
-        'error': SchedulerService.get_log_error_count(project=project, spider=spider, schedule_job_id=schedule_job_id),
+        'list': ScheduleService.get_log_list(
+            page=page, size=size, status=status,
+            project=project, spider=spider,
+            schedule_job_id=schedule_job_id),
+        'total': ScheduleService.get_log_total_count(
+            project=project, spider=spider, schedule_job_id=schedule_job_id),
+        'success': ScheduleService.get_log_success_count(
+            project=project, spider=spider, schedule_job_id=schedule_job_id),
+        'error': ScheduleService.get_log_error_count(
+            project=project, spider=spider, schedule_job_id=schedule_job_id),
     }
 
 
@@ -154,5 +158,6 @@ def remove_schedule_logs():
     spider = request.json.get("spider")
     schedule_job_id = request.json.get("schedule_job_id")
 
-    res = SchedulerService.remove_log(project=project, spider=spider, schedule_job_id=schedule_job_id, status=status)
-    print(res)
+    ScheduleService.remove_log(
+        project=project, spider=spider,
+        schedule_job_id=schedule_job_id, status=status)
