@@ -83,8 +83,9 @@ $ python -c 'import base64;import os;print(base64.b64encode(os.urandom(32)).deco
 
 
 2、后端技术
+
 | 功能 | 第三方库及文档 |
-| - | -  | 
+| - | -  |
 | 接口服务 | [Flask](https://dormousehole.readthedocs.io/) |
 | 任务调度 | [apscheduler](https://apscheduler.readthedocs.io/) |
 | scrapyd接口 | [scrapyd-api](https://github.com/mouday/scrapyd-api) |
