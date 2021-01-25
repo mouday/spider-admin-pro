@@ -40,7 +40,7 @@ def list_projects():
 def list_versions():
     project = request.json['project']
 
-    return client.list_format_versions(project=project)
+    return client.list_versions_format(project=project)
 
 
 @scrapyd_api.post('/listJobs')

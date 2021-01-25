@@ -3,8 +3,9 @@
 
 from spider_admin_pro.config import SCRAPYD_SERVER
 from spider_admin_pro.service.schedule_service import scheduler
-from spider_admin_pro.service.scrapyd_service import client
+from spider_admin_pro.service.scrapyd_service import client, ScrapydService
 from spider_admin_pro.utils.system_info_util import SystemInfoUtil
+from spider_admin_pro.version import VERSION
 
 
 class SystemDataService(object):
@@ -50,19 +51,14 @@ class SystemDataService(object):
     @classmethod
     def get_system_config(cls):
 
-        try:
-            res = client.daemon_status()
-            print(res)
-            status = True if res['status'] == 'ok' else False
-        except Exception:
-            status = False
-
         return {
             'scrapyd': {
                 'url': SCRAPYD_SERVER,
-                'status': status
+                'status': ScrapydService.get_status()
+            },
+            'spider_admin': {
+                'version': VERSION
             }
-
         }
 
     @classmethod

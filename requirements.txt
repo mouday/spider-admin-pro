@@ -1,3 +1,5 @@
+environs
+psutil
 scrapyd-api
 PyJWT
 peewee

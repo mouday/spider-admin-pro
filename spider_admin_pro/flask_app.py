@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 import traceback
+from collections import Iterator
 from datetime import datetime
 
 from flask import Flask, Blueprint, Request
 from flask.json import JSONEncoder
 from peewee import ModelSelect
 
-from spider_admin_pro.exceptions.api_exception import ApiException
 from spider_admin_pro.api_result import ApiResult
-from collections import Iterable, Iterator
+from spider_admin_pro.exceptions.api_exception import ApiException
 
 
 class CustomJSONEncoder(JSONEncoder):

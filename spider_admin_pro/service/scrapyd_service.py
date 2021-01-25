@@ -49,6 +49,16 @@ class ScrapydService(object):
             message=message
         )
 
+    @classmethod
+    def get_status(cls):
+        try:
+            res = client.daemon_status()
+            status = True if res['status'] == 'ok' else False
+        except Exception:
+            status = False
+
+        return status
+
 
 if __name__ == '__main__':
     ScrapydService.run_spider(project='project', spider='baidu', schedule_job_id="xx")
