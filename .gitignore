@@ -1,0 +1,12 @@
+.idea
+__pycache__
+*.pyc
+*.sqlite
+*.db
+build/
+dist/
+spideradmin.egg-info/
+*.log
+*.db-shm
+*.db-wal
+.env

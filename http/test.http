@@ -1,0 +1,65 @@
+# For a quick start check out our HTTP Requests collection (Tools|HTTP Client|Open HTTP Requests Collection).
+#
+# Following HTTP Request Live Templates are available:
+# * 'gtrp' and 'gtr' create a GET request with or without query parameters;
+# * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
+# * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
+
+POST {{base_url}}/list-projects
+Content-Type: application/json
+
+{}
+###
+
+POST {{base_url}}/list-versions
+Content-Type: application/json
+
+{
+  "project":  "scrapy_demo",
+  "base_url":  "http://127.0.0.1:6800"
+}
+###
+
+POST {{base_url}}/list-jobs
+Content-Type: application/json
+
+{
+  "project":  "scrapy_demo",
+  "base_url":  "http://127.0.0.1:6800"
+}
+
+###
+POST {{base_url}}/list-jobs-merge
+Content-Type: application/json
+
+{
+  "project":  "scrapy_demo",
+  "base_url":  "http://127.0.0.1:6800"
+}
+
+###
+POST {{base_url}}/listJobsMerge
+
+
+{}
+
+###
+POST {{baseUrl}}/scrapyd/listSpiders
+Content-Type: application/json
+Token: xxx
+
+{
+  "project":  "scrapy_demo",
+  "base_url":  "http://127.0.0.1:6800"
+}
+
+###
+
+POST {{baseUrl}}/schedule/state
+
+###
+
+POST {{baseUrl}}/schedule/scheduleLogs
+#Content-Type: application/json
+
+###
