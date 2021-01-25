@@ -1,4 +1,5 @@
 graft spider_admin_pro
+graft doc/img
 global-include *.py
 include README.md
 include requirements.txt
