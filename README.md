@@ -133,50 +133,18 @@ $ python -c 'import base64;import os;print(base64.b64encode(os.urandom(32)).deco
 【私有仓库】基于Vue的前端项目spider-admin-pro-web: [https://github.com/mouday/spider-admin-pro-web](https://github.com/mouday/spider-admin-pro-web)
 
 
-spider-admin-pro项目结构：
+spider-admin-pro项目主要目录结构：
 
 ```bash
 .
-├── __init__.py
-├── run.py
-├── main.py
-├── config.py
-├── version.py
-├── flask_app.py
-├── logger.py
-├── api_result.py
-├── api
-│   ├── __init__.py
-│   ├── auth_api.py
-│   ├── schedule_api.py
-│   ├── scrapyd_api.py
-│   └── system_info_api.py
-├── service
-│   ├── __init__.py
-│   ├── auth_service.py
-│   ├── schedule_service.py
-│   ├── scrapyd_service.py
-│   └── system_data_service.py
-├── model
-│   ├── __init__.py
-│   ├── base.py
-│   └── history.py
-├── exceptions
-│   ├── __init__.py
-│   ├── api_exception.py
-│   └── constant.py
-├── utils
-│   ├── __init__.py
-│   ├── jwt_util.py
-│   ├── scheduler_util.py
-│   ├── sqlite_util.py
-│   └── system_info_util.py
-└── web
-    ├── __init__.py
-    ├── main.py
-    └── public
-        ├── index.html
-        └── static
+├── run.py        # 程序入口
+├── api           # Controller层
+├── service       # Sevice层
+├── model         # Model层
+├── exceptions    # 异常 
+├── utils         # 工具类
+└── web           # 静态web页
+
 ```
 ## 项目截图
 
