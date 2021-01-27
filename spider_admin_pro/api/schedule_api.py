@@ -137,7 +137,7 @@ def schedule_logs():
     schedule_job_id = request.json.get("schedule_job_id")
 
     return {
-        'list': ScheduleService.get_log_list(
+        'list': ScheduleService.get_log_list_with_stats(
             page=page, size=size, status=status,
             project=project, spider=spider,
             schedule_job_id=schedule_job_id),

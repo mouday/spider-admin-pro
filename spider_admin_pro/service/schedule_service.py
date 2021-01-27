@@ -7,9 +7,11 @@ from apscheduler.schedulers.background import BackgroundScheduler
 
 from spider_admin_pro.config import JOB_STORES_DATABASE_URL
 from spider_admin_pro.logger import Logger
-from spider_admin_pro.model.history import HistoryModel
+from spider_admin_pro.model.schedule_history_model import ScheduleHistoryModel
 from spider_admin_pro.service.scrapyd_service import ScrapydService
+from spider_admin_pro.service.stats_collection_service import StatsCollectionService
 from spider_admin_pro.utils.sqlite_util import make_sqlite_dir
+from spider_admin_pro.utils.time_util import TimeUtil
 
 logger = Logger.get_logger('apscheduler')
 
@@ -79,102 +81,152 @@ class ScheduleService(object):
 
     @classmethod
     def get_job_id(cls):
+        """spider_job_id"""
         return uuid.uuid4().hex
 
     @classmethod
-    def get_log_list(cls, page=1, size=20, status=None, project=None, spider=None, schedule_job_id=None):
-        query = HistoryModel.select()
+    def get_log_list(cls, page=1, size=20,
+                     status=None,
+                     project=None,
+                     spider=None,
+                     schedule_job_id=None):
+        """调度日志列表"""
+
+        query = ScheduleHistoryModel.select()
 
         if project:
-            query = query.where(HistoryModel.project == project)
+            query = query.where(ScheduleHistoryModel.project == project)
         if spider:
-            query = query.where(HistoryModel.spider == spider)
+            query = query.where(ScheduleHistoryModel.spider == spider)
         if schedule_job_id:
-            query = query.where(HistoryModel.schedule_job_id == schedule_job_id)
+            query = query.where(ScheduleHistoryModel.schedule_job_id == schedule_job_id)
 
         if status == 'success':
-            query = query.where(HistoryModel.spider_job_id != '')
+            query = query.where(ScheduleHistoryModel.spider_job_id != '')
         elif status == 'error':
-            query = query.where(HistoryModel.spider_job_id == '')
+            query = query.where(ScheduleHistoryModel.spider_job_id == '')
 
-        query = query.order_by(
-            HistoryModel.create_time.desc()
+        rows = query.order_by(
+            ScheduleHistoryModel.create_time.desc()
         ).paginate(page, size).dicts()
 
-        lst = []
-        for row in query:
-            row['status'] = False if row['spider_job_id'] == '' else True
-            lst.append(row)
+        return rows
 
-        return lst
+    @classmethod
+    def get_log_list_with_stats(cls, page=1, size=20,
+                                status=None,
+                                project=None,
+                                spider=None,
+                                schedule_job_id=None):
+        """获取调度日志和运行日志"""
+
+        rows = cls.get_log_list(
+            page=page, size=size, status=status,
+            project=project, spider=spider,
+            schedule_job_id=schedule_job_id
+        )
+
+        # 关联schedule
+        spider_job_ids = []
+
+        # 调度状态
+        for row in rows:
+            if row['spider_job_id'] != '':
+                spider_job_ids.append(row['spider_job_id'])
+                row['status'] = True
+            else:
+                row['status'] = False
+
+        stats_dict = StatsCollectionService.get_dict_by_spider_job_ids(spider_job_ids)
+
+        # 运行状态
+        for row in rows:
+            spider_job_id = row['spider_job_id']
+            if spider_job_id == '':
+                row['run_status'] = 'unknown'
+            else:
+                if spider_job_id in stats_dict:
+                    stats_row = stats_dict[spider_job_id]
+                    row['run_status'] = 'finished'
+                    row['item_count'] = stats_row['item_dropped_count'] + stats_row['item_scraped_count']
+                    row['log_error_count'] = stats_row['log_error_count']
+                    row['duration_str'] = TimeUtil.format_duration(
+                        (stats_row['finish_time'] - stats_row['start_time']).seconds
+                    )
+
+        return rows
 
     @classmethod
     def get_log_total_count(cls, project=None, spider=None, schedule_job_id=None):
-        query = HistoryModel.select()
+        """计算日志总条数"""
+        query = ScheduleHistoryModel.select()
 
         if project:
-            query = query.where(HistoryModel.project == project)
+            query = query.where(ScheduleHistoryModel.project == project)
 
         if spider:
-            query = query.where(HistoryModel.spider == spider)
+            query = query.where(ScheduleHistoryModel.spider == spider)
 
         if schedule_job_id:
-            query = query.where(HistoryModel.schedule_job_id == schedule_job_id)
+            query = query.where(ScheduleHistoryModel.schedule_job_id == schedule_job_id)
 
         return query.count()
 
     @classmethod
     def get_log_success_count(cls, project=None, spider=None, schedule_job_id=None):
-        query = HistoryModel.select()
+        """计算成功日志条数"""
+        query = ScheduleHistoryModel.select()
 
         if project:
-            query = query.where(HistoryModel.project == project)
+            query = query.where(ScheduleHistoryModel.project == project)
 
         if spider:
-            query = query.where(HistoryModel.spider == spider)
+            query = query.where(ScheduleHistoryModel.spider == spider)
 
         if schedule_job_id:
-            query = query.where(HistoryModel.schedule_job_id == schedule_job_id)
+            query = query.where(ScheduleHistoryModel.schedule_job_id == schedule_job_id)
 
-        query = query.where(HistoryModel.spider_job_id != '')
+        query = query.where(ScheduleHistoryModel.spider_job_id != '')
         return query.count()
 
     @classmethod
     def get_log_error_count(cls, project=None, spider=None, schedule_job_id=None):
-        query = HistoryModel.select()
+        """计算失败日志条数"""
+        query = ScheduleHistoryModel.select()
 
         if project:
-            query = query.where(HistoryModel.project == project)
+            query = query.where(ScheduleHistoryModel.project == project)
 
         if spider:
-            query = query.where(HistoryModel.spider == spider)
+            query = query.where(ScheduleHistoryModel.spider == spider)
 
         if schedule_job_id:
-            query = query.where(HistoryModel.schedule_job_id == schedule_job_id)
+            query = query.where(ScheduleHistoryModel.schedule_job_id == schedule_job_id)
 
-        query = query.where(HistoryModel.spider_job_id == '')
+        query = query.where(ScheduleHistoryModel.spider_job_id == '')
         return query.count()
 
     @classmethod
     def remove_log(cls, project=None, spider=None, schedule_job_id=None, status=None):
-        query = HistoryModel.delete()
+        """移除日志"""
+        query = ScheduleHistoryModel.delete()
 
         if project:
-            query = query.where(HistoryModel.project == project)
+            query = query.where(ScheduleHistoryModel.project == project)
 
         if spider:
-            query = query.where(HistoryModel.spider == spider)
+            query = query.where(ScheduleHistoryModel.spider == spider)
 
         if schedule_job_id:
-            query = query.where(HistoryModel.schedule_job_id == schedule_job_id)
+            query = query.where(ScheduleHistoryModel.schedule_job_id == schedule_job_id)
 
         if status == 'success':
-            query = query.where(HistoryModel.spider_job_id != '')
+            query = query.where(ScheduleHistoryModel.spider_job_id != '')
         elif status == 'error':
-            query = query.where(HistoryModel.spider_job_id == '')
+            query = query.where(ScheduleHistoryModel.spider_job_id == '')
 
         return query.execute()
 
 
 if __name__ == '__main__':
-    print(SchedulerService.get_log_list(1, 20, 'success', 'project', 'spider'))
+    print(ScheduleService.get_log_list(1, 20, 'success', 'project', 'spider'))

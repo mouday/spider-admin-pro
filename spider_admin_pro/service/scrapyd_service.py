@@ -3,7 +3,8 @@ import json
 
 from spider_admin_pro.config import SCRAPYD_SERVER
 from scrapyd_api import ScrapydClient
-from spider_admin_pro.model.history import HistoryModel
+
+from spider_admin_pro.model.schedule_history_model import ScheduleHistoryModel
 
 client = ScrapydClient(base_url=SCRAPYD_SERVER)
 
@@ -40,7 +41,7 @@ class ScrapydService(object):
             message = str(e)
             spider_job_id = ''
 
-        HistoryModel.insert_row(
+        ScheduleHistoryModel.insert_row(
             project=project,
             spider=spider,
             schedule_job_id=schedule_job_id,

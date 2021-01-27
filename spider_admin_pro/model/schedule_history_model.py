@@ -6,7 +6,7 @@ from peewee import CharField, IntegerField, DateTimeField, BooleanField
 from spider_admin_pro.model.base import BaseModel
 
 
-class HistoryModel(BaseModel):
+class ScheduleHistoryModel(BaseModel):
     id = IntegerField(primary_key=True)
 
     project = CharField(max_length=32)
@@ -41,8 +41,8 @@ class HistoryModel(BaseModel):
         )
 
 
-HistoryModel.create_table()
+ScheduleHistoryModel.create_table()
 
 if __name__ == '__main__':
-    history = HistoryModel(project="project", spider="baidu", schedule_job_id="1", spider_job_id="1")
+    history = ScheduleHistoryModel(project="project", spider="baidu", schedule_job_id="1", spider_job_id="1")
     history.save()

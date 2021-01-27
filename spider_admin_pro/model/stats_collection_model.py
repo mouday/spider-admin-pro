@@ -1,0 +1,30 @@
+# -*- coding: utf-8 -*-
+from datetime import datetime
+
+from peewee import CharField, IntegerField, DateTimeField, BooleanField
+
+from spider_admin_pro.model.base import BaseModel
+
+
+class StatsCollectionModel(BaseModel):
+    id = IntegerField(primary_key=True)
+
+    spider_job_id = CharField(max_length=32)
+    project = CharField(max_length=32)
+    spider = CharField(max_length=64)
+
+    item_scraped_count = IntegerField()
+    item_dropped_count = IntegerField()
+    start_time = DateTimeField()
+    finish_time = DateTimeField()
+    finish_reason = CharField(max_length=64)
+    log_error_count = IntegerField()
+
+    create_time = DateTimeField(default=datetime.now)
+
+
+StatsCollectionModel.create_table()
+
+if __name__ == '__main__':
+    history = StatsCollectionModel(project="project", spider="baidu", schedule_job_id="1", spider_job_id="1")
+    history.save()

@@ -15,20 +15,22 @@ Spider Admin Pro 是Spider Admin的升级版
 3. 优化了后端接口，对后端项目进行了目录划分；
 4. 整体代码利于升级维护。
 
+![](https://github.com/mouday/spider-admin-pro/raw/master/doc/img/spider-admin-pro.png)
+
 ## 安装启动
 
 方式一：
 ```bash
-$ pip install spider-admin-pro
+$ pip3 install spider-admin-pro
 
-$ python -m spider_admin_pro.run
+$ python3 -m spider_admin_pro.run
 ```
 
 方式二：
 ```bash
 $ git clone https://github.com/mouday/spider-admin-pro.git
 
-$ python spider_admin_pro/run.py
+$ python3 spider_admin_pro/run.py
 
 或者
 
@@ -67,10 +69,40 @@ SPIDER_ADMIN_PRO_JOB_STORES_DATABASE_URL = 'sqlite:///dbs/apscheduler.db'
 
 ```
 
+使用`python3 -m` 运行，需要将变量加入到环境变量中，运行目录下新建文件`env.bash`
+
+注意，此时等号后面不可以用空格
+
+```bash
+# flask 服务配置
+export SPIDER_ADMIN_PRO_PORT=5002
+export SPIDER_ADMIN_PRO_HOST='127.0.0.1'
+
+# 登录账号密码
+export SPIDER_ADMIN_PRO_USERNAME='admin'
+export SPIDER_ADMIN_PRO_PASSWORD='123456'
+export SPIDER_ADMIN_PRO_JWT_KEY='FU0qnuV4t8rr1pvg93NZL3DLn6sHrR1sCQqRzachbo0='
+
+```
+
+增加环境变量后运行
+```bash
+$ source env.bash
+
+$ python3 -m spider_admin_pro.run
+
+```
+
+
 生成jwt key
 ```
 $ python -c 'import base64;import os;print(base64.b64encode(os.urandom(32)).decode())'
 ```
+
+## 使用扩展
+
+收集运行日志：[scrapy-util](https://github.com/mouday/scrapy-util) 可以帮助你手机到程序运行的统计数据
+
 
 ## 技术栈：
 1、前端技术：
@@ -89,15 +121,16 @@ $ python -c 'import base64;import os;print(base64.b64encode(os.urandom(32)).deco
 | 接口服务 | [Flask](https://dormousehole.readthedocs.io/) |
 | 任务调度 | [apscheduler](https://apscheduler.readthedocs.io/) |
 | scrapyd接口 | [scrapyd-api](https://github.com/mouday/scrapyd-api) |
+| 网络请求 | [session-request](https://github.com/mouday/session-request) |
 | ORM | [peewee](http://docs.peewee-orm.com/) |
 | jwt | [jwt](https://pyjwt.readthedocs.io/) |
 | 系统信息 | [psutil](https://psutil.readthedocs.io/) |
 
 ## 项目结构
 
-【公开仓库】基于Flask的后端项目spider-admin-pro: [https://github.com/mouday/spider-admin-pro-web/](https://github.com/mouday/spider-admin-pro)
+【公开仓库】基于Flask的后端项目spider-admin-pro: [https://github.com/mouday/spider-admin-pro](https://github.com/mouday/spider-admin-pro)
 
-【私有仓库】基于Vue的前端项目spider-admin-pro-web: [https://github.com/mouday/spider-admin-pro-web/](https://github.com/mouday/spider-admin-pro-web/)
+【私有仓库】基于Vue的前端项目spider-admin-pro-web: [https://github.com/mouday/spider-admin-pro-web](https://github.com/mouday/spider-admin-pro-web)
 
 
 spider-admin-pro项目结构：
@@ -147,18 +180,24 @@ spider-admin-pro项目结构：
 ```
 ## 项目截图
 
-![](doc/img/dashboard.png)
+![](https://github.com/mouday/spider-admin-pro/raw/master/doc/img/dashboard.png)
 
-![](doc/img/project.png)
+![](https://github.com/mouday/spider-admin-pro/raw/master/doc/img/project.png)
 
-![](doc/img/schedule.png)
+![](https://github.com/mouday/spider-admin-pro/raw/master/doc/img/schedule.png)
 
-![](doc/img/logs.png)
-
+![](https://github.com/mouday/spider-admin-pro/raw/master/doc/img/logs.png)
 
 
 ## TODO
 
-1. 补全开发文档
-2. 支持命令行安装可用
-3. 优化代码布局，提取公共库
+~~1. 补全开发文档~~
+
+~~2. 支持命令行安装可用~~
+
+~~3. 优化代码布局，提取公共库~~
+
+~~4. 日志自动刷新~~
+
+~~5. scrapy项目数据收集~~
+
