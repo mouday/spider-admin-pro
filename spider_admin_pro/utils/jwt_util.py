@@ -14,13 +14,14 @@ class JwtUtil(object):
         获取token
         :param payload: dict
         :param expires: 过期时间：天
-        :return: str
+        :return: byte
         """
 
         # 使用utc时间
         payload['exp'] = datetime.utcnow() + timedelta(days=expires)
 
-        return jwt.encode(payload=payload, key=self.key).decode()
+        # 返回 str 部分Python版本会报错
+        return jwt.encode(payload=payload, key=self.key)
 
     def decode(self, token):
         """
