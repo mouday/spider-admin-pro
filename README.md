@@ -101,7 +101,7 @@ $ python -c 'import base64;import os;print(base64.b64encode(os.urandom(32)).deco
 
 ## 使用扩展
 
-收集运行日志：[scrapy-util](https://github.com/mouday/scrapy-util) 可以帮助你手机到程序运行的统计数据
+收集运行日志：[scrapy-util](https://github.com/mouday/scrapy-util) 可以帮助你收集到程序运行的统计数据
 
 
 ## 技术栈：
