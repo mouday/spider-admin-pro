@@ -1,11 +1,8 @@
 # -*- coding: utf-8 -*-
-import logging
 import time
 from datetime import datetime, timedelta
 
 import jwt
-
-logger = logging.getLogger(__name__)
 
 
 class JwtUtil(object):
@@ -32,8 +29,6 @@ class JwtUtil(object):
         :param token: str
         :return:  dict
         """
-        logger.info('token: %s', token)
-
         return jwt.decode(jwt=token, key=self.key)
 
 
