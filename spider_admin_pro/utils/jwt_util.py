@@ -21,7 +21,7 @@ class JwtUtil(object):
         payload['exp'] = datetime.utcnow() + timedelta(days=expires)
 
         # 返回 str 部分Python版本会报错
-        return jwt.encode(payload=payload, key=self.key)
+        return jwt.encode(payload=payload, key=self.key, algorithm='HS256')
 
     def decode(self, token):
         """
@@ -29,7 +29,7 @@ class JwtUtil(object):
         :param token: str
         :return:  dict
         """
-        return jwt.decode(jwt=token, key=self.key)
+        return jwt.decode(jwt=token, key=self.key, algorithms=['HS256'])
 
 
 if __name__ == '__main__':

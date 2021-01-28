@@ -25,7 +25,6 @@ class AuthService(object):
 
     @classmethod
     def check_token(cls, token):
-        print('token', token)
         # 测试环境下不校验
         if current_app.debug is True:
             return True
