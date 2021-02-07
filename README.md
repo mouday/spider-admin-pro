@@ -157,6 +157,11 @@ spider-admin-pro项目主要目录结构：
 ![](https://github.com/mouday/spider-admin-pro/raw/master/doc/img/logs.png)
 
 
+## 经验总结
+Scrapyd 不能直接暴露在外网
+1. 其他人通过deploy部署可以将代码部署到你的机器上，如果是root用户运行，还会在你机器上做其他的事情
+2. 还有运行日志中会出现配置文件中的信息，存在信息泄露的危险
+
 ## TODO
 
 ~~1. 补全开发文档~~

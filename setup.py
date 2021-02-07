@@ -11,7 +11,8 @@ from setuptools import setup, find_packages
 """
 ## 本地测试
 安装测试
-python setup.py install 
+python setup.py develop 
+python setup.py develop --uninstall
 
 卸载
 pip uninstall spideradmin -y
