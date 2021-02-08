@@ -129,31 +129,34 @@ class ScheduleService(object):
         # 关联schedule
         spider_job_ids = []
 
-        # 调度状态
         for row in rows:
+            # 调度状态
             if row['spider_job_id'] != '':
                 spider_job_ids.append(row['spider_job_id'])
                 row['status'] = True
             else:
                 row['status'] = False
 
+            # 调度模式
+            if row['schedule_job_id']:
+                row['schedule_mode'] = '自动'
+            else:
+                row['schedule_mode'] = '手动'
+
         stats_dict = StatsCollectionService.get_dict_by_spider_job_ids(spider_job_ids)
 
         # 运行状态
         for row in rows:
             spider_job_id = row['spider_job_id']
-            if spider_job_id == '':
-                row['run_status'] = 'unknown'
-            else:
-                if spider_job_id in stats_dict:
-                    stats_row = stats_dict[spider_job_id]
-                    row['run_status'] = 'finished'
-                    row['item_count'] = stats_row['item_dropped_count'] + stats_row['item_scraped_count']
-                    row['log_error_count'] = stats_row['log_error_count']
-                    row['duration_str'] = TimeUtil.format_duration(
-                        (stats_row['finish_time'] - stats_row['start_time']).seconds
-                    )
 
+            if spider_job_id in stats_dict:
+                stats_row = stats_dict[spider_job_id]
+                row['run_status'] = 'finished'
+                row['item_count'] = stats_row['item_dropped_count'] + stats_row['item_scraped_count']
+                row['log_error_count'] = stats_row['log_error_count']
+                row['duration_str'] = TimeUtil.format_duration(stats_row['duration'])
+            else:
+                row['run_status'] = 'unknown'
         return rows
 
     @classmethod

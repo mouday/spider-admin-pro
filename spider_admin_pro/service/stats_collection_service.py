@@ -10,24 +10,51 @@ from spider_admin_pro.utils.time_util import TimeUtil
 
 class StatsCollectionService(object):
     @classmethod
-    def list(cls, page=1, size=20, project=None, spider=None):
+    def list(cls, page=1, size=20,
+             project=None, spider=None,
+             order_prop=None, order_type=None
+             ):
+        """
+
+        :param page:
+        :param size:
+        :param project:
+        :param spider:
+        :param order_prop: duration, log_error_count
+        :param order_type: descending, ascending
+        :return:
+        """
         query = StatsCollectionModel.select()
 
+        # 查询条件
         if project:
             query = query.where(StatsCollectionModel.project == project)
 
         if spider:
             query = query.where(StatsCollectionModel.spider == spider)
 
-        rows = (query
-                .order_by(StatsCollectionModel.create_time.desc())
-                .paginate(page, size)
-                .dicts()
-                )
+        # 排序, 默认创建时间倒排
+        if order_prop == 'duration':
+            if order_type == 'descending':
+                query = query.order_by(StatsCollectionModel.duration.desc())
+            else:
+                query = query.order_by(StatsCollectionModel.duration.asc())
+
+        elif order_prop == 'log_error_count':
+            if order_type == 'descending':
+                query = query.order_by(StatsCollectionModel.log_error_count.desc())
+            else:
+                query = query.order_by(StatsCollectionModel.log_error_count.asc())
+
+        else:
+            query = query.order_by(StatsCollectionModel.create_time.desc())
+
+        # 分页
+        rows = query.paginate(page, size).dicts()
 
         # 计算持续时间
         for row in rows:
-            row['duration_str'] = TimeUtil.format_duration((row['finish_time'] - row['start_time']).seconds)
+            row['duration_str'] = TimeUtil.format_duration(row['duration'])
 
         return rows
 

@@ -10,7 +10,7 @@ class ApiResult(object):
         self.code = code
 
     @classmethod
-    def success(cls, data, msg='success', code=0):
+    def success(cls, data=None, msg='success', code=0):
         return cls(data, msg, code)
 
     @classmethod

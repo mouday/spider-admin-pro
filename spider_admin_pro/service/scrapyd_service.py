@@ -16,14 +16,22 @@ class ScrapydService(object):
         """
         运行爬虫函数
         :param kwargs:
+            必传：
             project 项目名 str
             spider  爬虫名 str
+
+            可选：
+            schedule_job_id 调度任务id，
+                如果为空字符串：是手动调度，
+                否则是自动调度
+
             options 其他参数 dict
         :return:
         """
         project = kwargs['project']
-        schedule_job_id = kwargs['schedule_job_id']
         spider = kwargs['spider']
+
+        schedule_job_id = kwargs.get('schedule_job_id')
         options = kwargs.get('options')
 
         # 默认值处理

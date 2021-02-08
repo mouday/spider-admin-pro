@@ -23,5 +23,6 @@ app.register_blueprint(stats_collection_api, url_prefix="/api/statsCollection")
 
 @app.before_request
 def before_request():
+    """跨域请求会出现options，直接返回即可"""
     if request.method == 'OPTIONS':
         return make_response()

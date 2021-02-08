@@ -8,9 +8,9 @@ from playhouse.shortcuts import ReconnectMixin
 from playhouse.sqliteq import SqliteQueueDatabase
 
 from spider_admin_pro.config import SCHEDULE_HISTORY_DATABASE_URL
-# 显示查询日志
 from spider_admin_pro.utils.sqlite_util import make_sqlite_dir
 
+# 显示查询日志
 logger = logging.getLogger('peewee')
 logger.setLevel(logging.DEBUG)
 logger.addHandler(logging.StreamHandler())

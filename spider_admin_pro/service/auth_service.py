@@ -10,14 +10,21 @@ jwt_util = JwtUtil(key=BASIC_AUTH_JWT_KEY)
 
 
 class AuthService(object):
+    # 用户名、密码
     username = BASIC_AUTH_USERNAME
     password = BASIC_AUTH_PASSWORD
+
+    # 过期时间
+    expires = BASIC_AUTH_EXPIRES
 
     @classmethod
     def login(cls, username, password):
         if username == cls.username and password == cls.password:
             # 7天有效
-            token = jwt_util.encode(payload={'username': username}, expires=BASIC_AUTH_EXPIRES)
+            token = jwt_util.encode(
+                payload={'username': username},
+                expires=cls.expires
+            )
 
             return {'token': token}
         else:

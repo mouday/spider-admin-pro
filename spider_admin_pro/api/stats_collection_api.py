@@ -25,6 +25,7 @@ def add_item():
     item_dropped_count = request.json['item_dropped_count']
     start_time = request.json['start_time']
     finish_time = request.json['finish_time']
+    duration = request.json['duration']
     finish_reason = request.json['finish_reason']
     log_error_count = request.json['log_error_count']
 
@@ -38,6 +39,7 @@ def add_item():
         finish_time=finish_time,
         finish_reason=finish_reason,
         log_error_count=log_error_count,
+        duration=duration
     )
 
 
@@ -48,8 +50,15 @@ def list_item():
     project = request.json.get("project")
     spider = request.json.get("spider")
 
+    order_prop = request.json.get("order_prop")
+    order_type = request.json.get("order_type")  # descending, ascending
+
     return {
-        'list': StatsCollectionService.list(page=page, size=size, project=project, spider=spider),
+        'list': StatsCollectionService.list(
+            page=page, size=size,
+            project=project, spider=spider,
+            order_prop=order_prop, order_type=order_type
+        ),
         'total': StatsCollectionService.count(project=project, spider=spider)
     }
 

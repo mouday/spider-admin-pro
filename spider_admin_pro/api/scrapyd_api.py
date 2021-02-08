@@ -7,7 +7,7 @@ from flask import request
 
 from spider_admin_pro.flask_app import BlueprintAppApi
 from spider_admin_pro.service.auth_service import AuthService
-from spider_admin_pro.service.scrapyd_service import client
+from spider_admin_pro.service.scrapyd_service import client, ScrapydService
 
 scrapyd_api = BlueprintAppApi("scrapyd", __name__)
 
@@ -85,7 +85,13 @@ def schedule():
     project = request.json['project']
     spider = request.json['spider']
 
-    return client.schedule(project=project, spider=spider)
+    kwargs = {
+        'project': project,
+        'spider': spider
+    }
+
+    # fix: 记录手动运行日志
+    ScrapydService.run_spider(**kwargs)
 
 
 @scrapyd_api.post('/deleteVersion')
