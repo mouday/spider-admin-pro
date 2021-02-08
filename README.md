@@ -112,6 +112,7 @@ $ python -c 'import base64;import os;print(base64.b64encode(os.urandom(32)).deco
 | 基本框架 | [vue](https://cn.vuejs.org/)  |
 | 仪表盘图表 | [echarts](https://echarts.apache.org/)  |
 | 网络请求 | [axios](https://www.npmjs.com/package/axios)  |
+| 界面样式 | [Element-UI](https://element.eleme.cn/)  |
 
 
 2、后端技术
