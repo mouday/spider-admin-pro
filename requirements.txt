@@ -6,3 +6,5 @@ peewee>=3.14.0
 requests>=2.22.0
 Flask>=1.0.3
 APScheduler>=3.6.0
+ip_area>=0.01
+user-agents>=2.2.0
