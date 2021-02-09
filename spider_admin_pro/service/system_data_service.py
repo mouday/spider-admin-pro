@@ -24,27 +24,34 @@ class SystemDataService(object):
         return [
             {
                 'title': '项目数量',
-                'count': projects
+                'count': projects,
+                'route': {'name': 'project'}
             },
             {
                 'title': '定时任务',
-                'count': len(scheduler.get_jobs())
+                'count': len(scheduler.get_jobs()),
+                'route': {'name': 'schedule'}
+
             },
             {
                 'title': '任务总数',
-                'count': res.get('total', 0)
+                'count': res.get('total', 0),
+                'route': {'name': 'job'}
             },
             {
                 'title': '等待任务',
-                'count': res.get('pending', 0)
+                'count': res.get('pending', 0),
+                'route': {'name': 'job', 'query': {'status': 'pending'}}
             },
             {
                 'title': '运行任务',
-                'count': res.get('running', 0)
+                'count': res.get('running', 0),
+                'route': {'name': 'job', 'query': {'status': 'running'}}
             },
             {
                 'title': '完成任务',
-                'count': res.get('finished', 0)
+                'count': res.get('finished', 0),
+                'route': {'name': 'job', 'query': {'status': 'finished'}}
             }
         ]
 
