@@ -1,5 +1,11 @@
 # Spider Admin Pro
 
+![PyPI](https://img.shields.io/pypi/v/spider-admin-pro.svg)
+![PyPI - Downloads](https://img.shields.io/pypi/dm/spider-admin-pro)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/spider-admin-pro)
+![PyPI - License](https://img.shields.io/pypi/l/spider-admin-pro)
+
+
 Github: [https://github.com/mouday/spider-admin-pro](https://github.com/mouday/spider-admin-pro)
 
 Gitee: [https://gitee.com/mouday/spider-admin-pro](https://gitee.com/mouday/spider-admin-pro)
