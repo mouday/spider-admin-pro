@@ -29,7 +29,3 @@ class StatsCollectionModel(BaseModel):
 
 
 StatsCollectionModel.create_table()
-
-if __name__ == '__main__':
-    history = StatsCollectionModel(project="project", spider="baidu", schedule_job_id="1", spider_job_id="1")
-    history.save()

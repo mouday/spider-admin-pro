@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 
+from flask import current_app
+
 from spider_admin_pro.config import BASIC_AUTH_USERNAME, BASIC_AUTH_PASSWORD, BASIC_AUTH_JWT_KEY, BASIC_AUTH_EXPIRES
 from spider_admin_pro.exceptions.api_exception import ApiException
 from spider_admin_pro.exceptions.constant import TOKEN_INVALID_ERROR, USERNAME_OR_PASSWORD_ERROR
 from spider_admin_pro.utils.jwt_util import JwtUtil
-from flask import current_app
 
 jwt_util = JwtUtil(key=BASIC_AUTH_JWT_KEY)
 
@@ -40,3 +41,7 @@ class AuthService(object):
             jwt_util.decode(token)
         except Exception:
             raise ApiException(TOKEN_INVALID_ERROR)
+
+    @classmethod
+    def decode_token(cls, token):
+        return jwt_util.decode(token)

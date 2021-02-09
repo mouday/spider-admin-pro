@@ -63,3 +63,20 @@ POST {{baseUrl}}/schedule/scheduleLogs
 #Content-Type: application/json
 
 ###
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{"username": "admin", "password":  "123456"}
+###
+
+GET https://www.ip.cn/api/index?ip=61.48.42.110&type=1
+
+###
+
+GET https://www.ip138.com/iplookup.asp?ip=39.97.246.76&action=2
+
+###
+
+POST {{baseUrl}}/actionHistory/loginHistoryList
+
+###

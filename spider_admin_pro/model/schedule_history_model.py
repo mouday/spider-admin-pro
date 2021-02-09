@@ -46,7 +46,3 @@ class ScheduleHistoryModel(BaseModel):
 
 
 ScheduleHistoryModel.create_table()
-
-if __name__ == '__main__':
-    history = ScheduleHistoryModel(project="project", spider="baidu", schedule_job_id="1", spider_job_id="1")
-    history.save()
