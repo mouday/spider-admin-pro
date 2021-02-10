@@ -40,71 +40,6 @@ $ git clone https://github.com/mouday/spider-admin-pro.git
 $ python3 spider_admin_pro/run.py
 ```
 
-方式三：使用 Gunicorn管理应用
-```bash
-$ gunicorn --config gunicorn.conf.py spider_admin_pro.run:app
-```
-
-Gunicorn文档：[https://docs.gunicorn.org/](https://docs.gunicorn.org/)
-
-一个配置示例：gunicorn.conf.py
-
-```python
-# -*- coding: utf-8 -*-
-
-"""
-$ gunicorn --config gunicorn.conf.py spider_admin_pro.run:app
-"""
-
-import multiprocessing
-import os
-
-from gevent import monkey
-
-monkey.patch_all()
-
-# 日志文件夹
-LOG_DIR = 'logs'
-
-if not os.path.exists(LOG_DIR):
-    os.mkdir(LOG_DIR)
-
-
-def resolve_file(filename):
-    return os.path.join(LOG_DIR, filename)
-
-
-def get_workers():
-    return multiprocessing.cpu_count() * 2 + 1
-
-
-# daemon = True
-daemon = False  # 使用supervisor不能是后台进程
-
-# 进程名称
-proc_name = "spider-admin-pro"
-
-# 启动端口
-bind = "127.0.0.1:5001"
-
-# 日志文件
-loglevel = 'debug'
-pidfile = resolve_file("gunicorn.pid")
-accesslog = resolve_file("access.log")
-errorlog = resolve_file("error.log")
-
-# 启动的进程数
-# workers = get_workers()
-workers = 2
-worker_class = 'gevent'
-
-
-# 启动时钩子
-def on_starting(server):
-    ip, port = server.address[0]
-    print('server.address:', f'http://{ip}:{port}')
-
-```
 ## 配置参数
 
 配置优先级：
@@ -201,6 +136,119 @@ LOG_DIR: 'logs'
 生成jwt key
 ```
 $ python -c 'import base64;import os;print(base64.b64encode(os.urandom(32)).decode())'
+```
+
+## 部署优化
+
+1、使用 Gunicorn管理应用
+
+Gunicorn文档：[https://docs.gunicorn.org/](https://docs.gunicorn.org/)
+
+```bash
+# 启动服务
+$ gunicorn --config gunicorn.conf.py spider_admin_pro.run:app
+```
+
+一个配置示例：gunicorn.conf.py
+
+```python
+# -*- coding: utf-8 -*-
+
+"""
+$ gunicorn --config gunicorn.conf.py spider_admin_pro.run:app
+"""
+
+import multiprocessing
+import os
+
+from gevent import monkey
+
+monkey.patch_all()
+
+# 日志文件夹
+LOG_DIR = 'logs'
+
+if not os.path.exists(LOG_DIR):
+    os.mkdir(LOG_DIR)
+
+
+def resolve_file(filename):
+    return os.path.join(LOG_DIR, filename)
+
+
+def get_workers():
+    return multiprocessing.cpu_count() * 2 + 1
+
+
+# daemon = True
+daemon = False  # 使用supervisor不能是后台进程
+
+# 进程名称
+proc_name = "spider-admin-pro"
+
+# 启动端口
+bind = "127.0.0.1:5001"
+
+# 日志文件
+loglevel = 'debug'
+pidfile = resolve_file("gunicorn.pid")
+accesslog = resolve_file("access.log")
+errorlog = resolve_file("error.log")
+
+# 启动的进程数
+# workers = get_workers()
+workers = 2
+worker_class = 'gevent'
+
+
+# 启动时钩子
+def on_starting(server):
+    ip, port = server.address[0]
+    print('server.address:', f'http://{ip}:{port}')
+
+```
+
+2、使用supervisor管理进程
+
+文档：[http://www.supervisord.org](http://www.supervisord.org)
+
+spider-admin-pro.ini
+
+```bash
+[program: spider-admin-pro]
+directory=/spider-admin-pro
+command=/usr/local/python3/bin/gunicorn --config gunicorn.conf.py spider_admin_pro.run:app
+
+stdout_logfile=logs/out.log
+stderr_logfile=logs/err.log
+
+stdout_logfile_maxbytes = 20MB
+stdout_logfile_backups = 0
+stderr_logfile_maxbytes=10MB
+stderr_logfile_backups=0
+```
+
+3、使用Nginx转发请求
+```bash
+server {
+    listen 80;
+
+    server_name _;
+
+    access_log  /var/log/nginx/access.log;
+    error_log  /var/log/nginx/error.log;
+
+    location / {
+        proxy_pass         http://127.0.0.1:5001/;
+        proxy_redirect     off;
+
+        proxy_set_header   Host                 $host;
+        proxy_set_header   X-Real-IP            $remote_addr;
+        proxy_set_header   X-Forwarded-For      $proxy_add_x_forwarded_for;
+        proxy_set_header   X-Forwarded-Proto    $scheme;
+    }
+}
+
 ```
 
 ## 使用扩展
