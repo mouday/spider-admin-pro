@@ -11,3 +11,5 @@ dist/
 *.db-wal
 .env
 config.yml
+logs/
+

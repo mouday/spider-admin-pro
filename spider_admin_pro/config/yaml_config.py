@@ -9,7 +9,7 @@ import os
 import yaml
 from spider_admin_pro.config import env_config
 
-config_file = 'config.yml'
+config_file = os.path.join(os.getcwd(), 'config.yml')
 
 if os.path.exists(config_file):
     f = open(config_file, "r")

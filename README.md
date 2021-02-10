@@ -117,26 +117,26 @@ yaml配置文件 >  env环境变量 > 默认配置
 ```bash
 
 # flask 服务配置
-SPIDER_ADMIN_PRO_PORT = 5002
-SPIDER_ADMIN_PRO_HOST = '127.0.0.1'
+PORT = 5002
+HOST = '127.0.0.1'
 
 # 登录账号密码
-SPIDER_ADMIN_PRO_USERNAME = admin
-SPIDER_ADMIN_PRO_PASSWORD = "123456"
-SPIDER_ADMIN_PRO_JWT_KEY = FU0qnuV4t8rr1pvg93NZL3DLn6sHrR1sCQqRzachbo0=
+USERNAME = admin
+PASSWORD = "123456"
+JWT_KEY = FU0qnuV4t8rr1pvg93NZL3DLn6sHrR1sCQqRzachbo0=
 
 # token过期时间，单位天
-SPIDER_ADMIN_PRO_EXPIRES = 7
+EXPIRES = 7
 
 # scrapyd地址, 结尾不要加斜杆
-SPIDER_ADMIN_PRO_SCRAPYD_SERVER = 'http://127.0.0.1:6800'
+SCRAPYD_SERVER = 'http://127.0.0.1:6800'
 
 # 调度器 调度历史存储设置
 # mysql or sqlite and other, any database for peewee support
-SPIDER_ADMIN_PRO_SCHEDULE_HISTORY_DATABASE_URL = 'sqlite:///dbs/schedule_history.db'
+SCHEDULE_HISTORY_DATABASE_URL = 'sqlite:///dbs/schedule_history.db'
 
 # 调度器 定时任务存储地址
-SPIDER_ADMIN_PRO_JOB_STORES_DATABASE_URL = 'sqlite:///dbs/apscheduler.db'
+JOB_STORES_DATABASE_URL = 'sqlite:///dbs/apscheduler.db'
 
 ```
 
