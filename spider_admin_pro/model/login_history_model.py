@@ -21,6 +21,3 @@ class LoginHistoryModel(BaseModel):
     result = BooleanField()
 
     create_time = DateTimeField(default=datetime.now)
-
-
-LoginHistoryModel.create_table()

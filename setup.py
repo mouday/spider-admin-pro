@@ -40,7 +40,7 @@ rm -rf dist build *.egg-info \
 
 ## 下载测试
 安装测试
-pip install -U spideradmin -i https://pypi.org/simple
+pip install -U spider-admin-pro -i https://pypi.org/simple
 
 打包的用的setup必须引入
 
@@ -66,7 +66,7 @@ setup(
     version=version["VERSION"],
     description="a spider admin based vue, scrapyd api and APScheduler",
 
-    keywords='spider admin',
+    keywords='spider admin scrapy scrapyd scheduler',
     author='Peng Shiyu',
     author_email='pengshiyuyx@gmail.com',
     license='MIT',

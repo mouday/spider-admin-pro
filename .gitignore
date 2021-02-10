@@ -10,3 +10,4 @@ dist/
 *.db-shm
 *.db-wal
 .env
+config.yml

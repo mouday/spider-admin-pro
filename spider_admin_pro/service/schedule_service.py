@@ -229,7 +229,3 @@ class ScheduleService(object):
             query = query.where(ScheduleHistoryModel.spider_job_id == '')
 
         return query.execute()
-
-
-if __name__ == '__main__':
-    print(ScheduleService.get_log_list(1, 20, 'success', 'project', 'spider'))

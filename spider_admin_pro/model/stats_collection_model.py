@@ -26,6 +26,3 @@ class StatsCollectionModel(BaseModel):
     log_error_count = IntegerField()
 
     create_time = DateTimeField(default=datetime.now)
-
-
-StatsCollectionModel.create_table()

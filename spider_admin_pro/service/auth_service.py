@@ -2,7 +2,12 @@
 
 from flask import current_app
 
-from spider_admin_pro.config import BASIC_AUTH_USERNAME, BASIC_AUTH_PASSWORD, BASIC_AUTH_JWT_KEY, BASIC_AUTH_EXPIRES
+from spider_admin_pro.config import (
+    BASIC_AUTH_USERNAME,
+    BASIC_AUTH_PASSWORD,
+    BASIC_AUTH_JWT_KEY,
+    BASIC_AUTH_EXPIRES
+)
 from spider_admin_pro.exceptions.api_exception import ApiException
 from spider_admin_pro.exceptions.constant import TOKEN_INVALID_ERROR, USERNAME_OR_PASSWORD_ERROR
 from spider_admin_pro.utils.jwt_util import JwtUtil

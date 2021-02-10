@@ -20,6 +20,7 @@ Spider Admin Pro 是Spider Admin的升级版
 2. 优化了前端界面，基于Vue的组件化开发；
 3. 优化了后端接口，对后端项目进行了目录划分；
 4. 整体代码利于升级维护。
+5. 目前仅对Python3进行了支持
 
 ![](https://github.com/mouday/spider-admin-pro/raw/master/doc/img/spider-admin-pro.png)
 
@@ -37,17 +38,81 @@ $ python3 -m spider_admin_pro.run
 $ git clone https://github.com/mouday/spider-admin-pro.git
 
 $ python3 spider_admin_pro/run.py
+```
 
-或者
+方式三：使用 Gunicorn管理应用
+```bash
+$ gunicorn --config gunicorn.conf.py spider_admin_pro.run:app
+```
 
-$ gunicorn spider_admin_pro.run:app
-``` 
+Gunicorn文档：[https://docs.gunicorn.org/](https://docs.gunicorn.org/)
 
+一个配置示例：gunicorn.conf.py
+
+```python
+# -*- coding: utf-8 -*-
+
+"""
+$ gunicorn --config gunicorn.conf.py spider_admin_pro.run:app
+"""
+
+import multiprocessing
+import os
+
+from gevent import monkey
+
+monkey.patch_all()
+
+# 日志文件夹
+LOG_DIR = 'logs'
+
+if not os.path.exists(LOG_DIR):
+    os.mkdir(LOG_DIR)
+
+
+def resolve_file(filename):
+    return os.path.join(LOG_DIR, filename)
+
+
+def get_workers():
+    return multiprocessing.cpu_count() * 2 + 1
+
+
+# daemon = True
+daemon = False  # 使用supervisor不能是后台进程
+
+# 进程名称
+proc_name = "spider-admin-pro"
+
+# 启动端口
+bind = "127.0.0.1:5001"
+
+# 日志文件
+loglevel = 'debug'
+pidfile = resolve_file("gunicorn.pid")
+accesslog = resolve_file("access.log")
+errorlog = resolve_file("error.log")
+
+# 启动的进程数
+# workers = get_workers()
+workers = 2
+worker_class = 'gevent'
+
+
+# 启动时钩子
+def on_starting(server):
+    ip, port = server.address[0]
+    print('server.address:', f'http://{ip}:{port}')
+
+```
 ## 配置参数
 
-在运行目录新建 `.env` 环境变量文件，默认参数如下
+配置优先级：
+```
+yaml配置文件 >  env环境变量 > 默认配置 
+```
 
-注意：为了与其他环境变量区分，使用`SPIDER_ADMIN_PRO_`作为变量前缀
+1、默认配置
 
 ```bash
 
@@ -75,7 +140,13 @@ SPIDER_ADMIN_PRO_JOB_STORES_DATABASE_URL = 'sqlite:///dbs/apscheduler.db'
 
 ```
 
-使用`python3 -m` 运行，需要将变量加入到环境变量中，运行目录下新建文件`env.bash`
+2、env环境变量
+
+在运行目录新建 `.env` 环境变量文件，默认参数如下
+
+注意：为了与其他环境变量区分，使用`SPIDER_ADMIN_PRO_`作为变量前缀
+
+如果使用`python3 -m` 运行，需要将变量加入到环境变量中，运行目录下新建文件`env.bash`
 
 注意，此时等号后面不可以用空格
 
@@ -98,6 +169,10 @@ $ source env.bash
 $ python3 -m spider_admin_pro.run
 
 ```
+
+3、config.yml
+
+在运行目录下新建`config.yml` 文件，运行时会自动读取该配置文件
 
 
 生成jwt key
@@ -153,21 +228,12 @@ spider-admin-pro项目主要目录结构：
 └── web           # 静态web页
 
 ```
-## 项目截图
-
-![](https://github.com/mouday/spider-admin-pro/raw/master/doc/img/dashboard.png)
-
-![](https://github.com/mouday/spider-admin-pro/raw/master/doc/img/project.png)
-
-![](https://github.com/mouday/spider-admin-pro/raw/master/doc/img/schedule.png)
-
-![](https://github.com/mouday/spider-admin-pro/raw/master/doc/img/logs.png)
-
 
 ## 经验总结
 Scrapyd 不能直接暴露在外网
 1. 其他人通过deploy部署可以将代码部署到你的机器上，如果是root用户运行，还会在你机器上做其他的事情
 2. 还有运行日志中会出现配置文件中的信息，存在信息泄露的危险
+
 
 ## TODO
 
@@ -180,4 +246,16 @@ Scrapyd 不能直接暴露在外网
 ~~4. 日志自动刷新~~
 
 ~~5. scrapy项目数据收集~~
+
+
+## 项目截图
+
+![](https://github.com/mouday/spider-admin-pro/raw/master/doc/img/dashboard.png)
+
+![](https://github.com/mouday/spider-admin-pro/raw/master/doc/img/project.png)
+
+![](https://github.com/mouday/spider-admin-pro/raw/master/doc/img/schedule.png)
+
+![](https://github.com/mouday/spider-admin-pro/raw/master/doc/img/logs.png)
+
 

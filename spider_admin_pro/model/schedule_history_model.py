@@ -43,6 +43,3 @@ class ScheduleHistoryModel(BaseModel):
             schedule_job_id=schedule_job_id,
             message=message
         )
-
-
-ScheduleHistoryModel.create_table()
