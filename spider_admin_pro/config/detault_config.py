@@ -25,3 +25,6 @@ SCHEDULE_HISTORY_DATABASE_URL = 'sqlite:///dbs/schedule_history.db'
 
 # 调度器 定时任务存储地址
 JOB_STORES_DATABASE_URL = 'sqlite:///dbs/apscheduler.db'
+
+# 日志文件夹
+LOG_DIR = 'logs'

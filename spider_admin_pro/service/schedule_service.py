@@ -1,19 +1,23 @@
 # -*- coding: utf-8 -*-
 import json
+import logging
+import os
 import uuid
 
 from apscheduler.jobstores.sqlalchemy import SQLAlchemyJobStore
 from apscheduler.schedulers.background import BackgroundScheduler
 
-from spider_admin_pro.config import JOB_STORES_DATABASE_URL
-from spider_admin_pro.logger import Logger
+from spider_admin_pro.config import JOB_STORES_DATABASE_URL, resolve_log_file
 from spider_admin_pro.model.schedule_history_model import ScheduleHistoryModel
 from spider_admin_pro.service.scrapyd_service import ScrapydService
 from spider_admin_pro.service.stats_collection_service import StatsCollectionService
 from spider_admin_pro.utils.sqlite_util import make_sqlite_dir
 from spider_admin_pro.utils.time_util import TimeUtil
 
-logger = Logger.get_logger('apscheduler')
+apscheduler_logger = logging.getLogger('apscheduler')
+
+file_handler = logging.FileHandler(resolve_log_file('apscheduler.log'))
+apscheduler_logger.addHandler(file_handler)
 
 # ==============================================
 # 调度器服务配置

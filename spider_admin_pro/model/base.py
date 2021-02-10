@@ -7,13 +7,15 @@ from playhouse.db_url import connect, register_database
 from playhouse.shortcuts import ReconnectMixin
 from playhouse.sqliteq import SqliteQueueDatabase
 
-from spider_admin_pro.config import SCHEDULE_HISTORY_DATABASE_URL
+from spider_admin_pro.config import SCHEDULE_HISTORY_DATABASE_URL, resolve_log_file
 from spider_admin_pro.utils.sqlite_util import make_sqlite_dir
 
 # 显示查询日志
-logger = logging.getLogger('peewee')
-logger.setLevel(logging.DEBUG)
-logger.addHandler(logging.StreamHandler())
+peewee_logger = logging.getLogger('peewee')
+peewee_logger.setLevel(logging.DEBUG)
+
+file_handler = logging.FileHandler(resolve_log_file('peewee.log'))
+peewee_logger.addHandler(file_handler)
 
 
 class ReconnectSqliteDatabase(ReconnectMixin, SqliteQueueDatabase):

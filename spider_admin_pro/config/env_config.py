@@ -36,3 +36,6 @@ with env.prefixed(pre_fix):
 
     # 调度器 定时任务存储地址
     JOB_STORES_DATABASE_URL = env.str('JOB_STORES_DATABASE_URL', detault_config.JOB_STORES_DATABASE_URL)
+
+    # 日志文件夹
+    LOG_DIR = env.str("LOG_DIR", detault_config.LOG_DIR)

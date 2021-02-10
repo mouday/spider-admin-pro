@@ -5,3 +5,10 @@
 """
 
 from .yaml_config import *
+
+if not os.path.exists(LOG_DIR):
+    os.mkdir(LOG_DIR)
+
+
+def resolve_log_file(filename):
+    return os.path.join(LOG_DIR, filename)
