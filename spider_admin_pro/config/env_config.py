@@ -21,7 +21,7 @@ with env.prefixed(pre_fix):
     # 登录账号密码
     BASIC_AUTH_USERNAME = env.str('USERNAME', detault_config.BASIC_AUTH_USERNAME)
     BASIC_AUTH_PASSWORD = env.str('PASSWORD', detault_config.BASIC_AUTH_PASSWORD)
-    BASIC_AUTH_JWT_KEY = env.str('JWT_KEY', detault_config)
+    BASIC_AUTH_JWT_KEY = env.str('JWT_KEY', detault_config.BASIC_AUTH_JWT_KEY)
 
     # token过期时间，单位天
     BASIC_AUTH_EXPIRES = env.int('EXPIRES', detault_config.BASIC_AUTH_EXPIRES)

@@ -15,7 +15,7 @@ config_file = os.path.join(os.getcwd(), 'config.yml')
 logger.info('config_file: %s', config_file)
 
 if os.path.exists(config_file):
-    f = open(config_file, "r")
+    f = open(config_file, "rb")
     config = yaml.safe_load(f)
     f.close()
 else:

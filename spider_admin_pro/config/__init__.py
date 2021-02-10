@@ -11,4 +11,5 @@ if not os.path.exists(LOG_DIR):
 
 
 def resolve_log_file(filename):
+    """补全日志文件夹"""
     return os.path.join(LOG_DIR, filename)
