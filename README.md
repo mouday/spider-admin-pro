@@ -107,7 +107,7 @@ $ python3 -m spider_admin_pro.run
 
 ```
 
-3、config.yml
+3、自定义配置
 
 在运行目录下新建`config.yml` 文件，运行时会自动读取该配置文件
 
@@ -149,6 +149,12 @@ Gunicorn文档：[https://docs.gunicorn.org/](https://docs.gunicorn.org/)
 $ gunicorn --config gunicorn.conf.py spider_admin_pro.run:app
 ```
 
+注意： 
+
+如果使用了 `Gunicorn` 那么 配置文件中的 `PORT` 和 `HOST` 将会不生效
+
+如果需要修改port 和host, 需要修改`gunicorn.conf.py` 文件中的 `bind`
+ 
 一个配置示例：gunicorn.conf.py
 
 ```python
@@ -214,7 +220,7 @@ def on_starting(server):
 
 spider-admin-pro.ini
 
-```bash
+```ini
 [program: spider-admin-pro]
 directory=/spider-admin-pro
 command=/usr/local/python3/bin/gunicorn --config gunicorn.conf.py spider_admin_pro.run:app
@@ -229,6 +235,7 @@ stderr_logfile_backups=0
 ```
 
 3、使用Nginx转发请求
+
 ```bash
 server {
     listen 80;
