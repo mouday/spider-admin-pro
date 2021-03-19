@@ -26,8 +26,26 @@ def before_request():
 #########################
 @schedule_api.post("/getJobs")
 def get_jobs():
+    order_prop = request.json.get('order_prop')
+    # ascending/descending
+    order_type = request.json.get('order_type', 'descending')
+
     jobs = scheduler.get_jobs()
-    return SchedulerUtil.jobs_to_dict(jobs)
+
+    lst = SchedulerUtil.jobs_to_dict(jobs)
+
+    if order_prop == 'spider':
+
+        if order_type == 'descending':
+            is_reverse = True
+        else:  # ascending
+            is_reverse = False
+
+        def _sort(item):
+            return item['kwargs']['spider']
+
+        lst = sorted(lst, key=_sort, reverse=is_reverse)
+    return lst
 
 
 @schedule_api.post("/addJob")

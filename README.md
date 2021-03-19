@@ -214,6 +214,13 @@ def on_starting(server):
 
 ```
 
+注意：
+
+使用gunicorn部署，会启动多个worker, 这样apscheduler会启动多个，可能会出现重复运行的情况（暂时没出现）
+
+这种情况下，调度器控制开关不要动，以免启动不了；如果出现了定时任务不执行，可尝试重启整个服务
+
+
 2、使用supervisor管理进程
 
 文档：[http://www.supervisord.org](http://www.supervisord.org)
@@ -325,6 +332,11 @@ Scrapyd 不能直接暴露在外网
 
 ~~5. scrapy项目数据收集~~
 
+[ok]6. 定时任务spider列左对齐，支持本地排序
+
+[x]7. 调度器控制移除停止开启开关，只保留暂停继续
+
+[x]8. 添加任务，默认项目名，关闭弹框取消form校验结果
 
 ## 项目截图
 

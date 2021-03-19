@@ -2,7 +2,7 @@
 
 # @Date    : 2019-06-26
 # @Author  : Peng Shiyu
-
+import glob
 import io
 import os
 
@@ -51,9 +51,13 @@ https://packaging.python.org/guides/making-a-pypi-friendly-readme/
 
 base_dir = os.path.dirname(os.path.abspath(__file__))
 
-version = {}
-with io.open(os.path.join(base_dir, "spider_admin_pro/version.py"), 'r') as f:
-    exec(f.read(), version)
+# 版本号
+version_file = glob.glob("*/version.py", recursive=True)[0]
+
+with io.open(version_file, 'rb') as f:
+    version_var = {}
+    exec(f.read(), version_var)
+    VERSION = version_var['VERSION']
 
 with io.open("README.md", 'r', encoding='utf-8') as f:
     long_description = f.read()
@@ -63,7 +67,7 @@ with io.open("requirements.txt", 'r') as f:
 
 setup(
     name='spider-admin-pro',
-    version=version["VERSION"],
+    version=VERSION,
     description="a spider admin based vue, scrapyd api and APScheduler",
 
     keywords='spider admin scrapy scrapyd scheduler',
@@ -78,7 +82,8 @@ setup(
     # Get strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers
     classifiers=[
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.6"
+        "Programming Language :: Python :: 3.6",
+        "Programming Language :: Python :: 3.7"
     ],
 
     packages=find_packages(),

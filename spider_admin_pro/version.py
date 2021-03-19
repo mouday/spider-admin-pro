@@ -3,4 +3,4 @@
 # @Date    : 2019-06-27
 # @Author  : Peng Shiyu
 
-VERSION = '0.0.12'
+VERSION = '1.0.0'
