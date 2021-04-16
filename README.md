@@ -338,6 +338,22 @@ Scrapyd 不能直接暴露在外网
 
 [x]8. 添加任务，默认项目名，关闭弹框取消form校验结果
 
+
+## 项目赞助
+
+日期 | 赞助者 | 金额
+- | - | - 
+2021-04-16 | [realhellosunsun](https://github.com/realhellosunsun) | ￥188
+
+
+## 交流沟通
+
+关注本项目的小伙伴越来越多，为了更好地交流沟通，可以加入群聊
+
+问题：邀请码 答案：SpiderAdmin
+
+![](doc/img/logs.png)
+
 ## 项目截图
 
 ![](https://github.com/mouday/spider-admin-pro/raw/master/doc/img/dashboard.png)
