@@ -341,9 +341,9 @@ Scrapyd 不能直接暴露在外网
 
 ## 项目赞助
 
-日期 | 赞助者 | 金额
-- | - | - 
-2021-04-16 | [realhellosunsun](https://github.com/realhellosunsun) | ￥188
+|日期 | 赞助者 | 金额|
+|- | - | - |
+|2021-04-16 | [realhellosunsun](https://github.com/realhellosunsun) | ￥188|
 
 
 ## 交流沟通
