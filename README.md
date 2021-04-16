@@ -352,7 +352,7 @@ Scrapyd 不能直接暴露在外网
 
 问题：邀请码 答案：SpiderAdmin
 
-![](https://github.com/mouday/spider-admin-pro/raw/master/doc/img/logs.png)
+![](https://github.com/mouday/spider-admin-pro/raw/master/doc/img/qq.jpg)
 
 ## 项目截图
 
