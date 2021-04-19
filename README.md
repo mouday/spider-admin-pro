@@ -12,7 +12,7 @@ Gitee: [https://gitee.com/mouday/spider-admin-pro](https://gitee.com/mouday/spid
 
 Pypi: [https://pypi.org/project/spider-admin-pro](https://pypi.org/project/spider-admin-pro)
 
-- [Spider Admin Pro](#spider-admin-pro)
+- [目录](#spider-admin-pro)
   * [简介](#--)
   * [安装启动](#----)
   * [配置参数](#----)
@@ -351,14 +351,6 @@ Scrapyd 不能直接暴露在外网
 [x]7. 调度器控制移除停止开启开关，只保留暂停继续
 
 [x]8. 添加任务，默认项目名，关闭弹框取消form校验结果
-
-
-## 项目赞助
-
-|日期 | 赞助者 | 金额|
-|- | - | - |
-|2021-04-16 | [realhellosunsun](https://github.com/realhellosunsun) | ￥188|
-
 
 ## 交流沟通
 
