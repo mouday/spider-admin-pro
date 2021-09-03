@@ -13,12 +13,12 @@ Gitee: [https://gitee.com/mouday/spider-admin-pro](https://gitee.com/mouday/spid
 Pypi: [https://pypi.org/project/spider-admin-pro](https://pypi.org/project/spider-admin-pro)
 
 - [目录](#spider-admin-pro)
-  * [简介](#--)
-  * [安装启动](#----)
+  * [简介](#简介)
+  * [安装启动](#安装启动)
   * [配置参数](#----)
   * [部署优化](#----)
   * [使用扩展](#----)
-  * [技术栈：](#----)
+  * [技术栈](#----)
   * [项目结构](#----)
   * [经验总结](#----)
   * [TODO](#todo)
@@ -28,7 +28,7 @@ Pypi: [https://pypi.org/project/spider-admin-pro](https://pypi.org/project/spide
 
 ## 简介
 
-Spider Admin Pro 是Spider Admin的升级版
+Spider Admin Pro 是[Spider Admin](https://github.com/mouday/SpiderAdmin)的升级版
 
 1. 简化了一些功能；
 2. 优化了前端界面，基于Vue的组件化开发；
@@ -39,6 +39,8 @@ Spider Admin Pro 是Spider Admin的升级版
 ![](https://github.com/mouday/spider-admin-pro/raw/master/doc/img/spider-admin-pro.png)
 
 ## 安装启动
+
+本项目基于Python3.7.0 开发，所以推荐使用Python3.7.0及其以上版本
 
 方式一：
 ```bash
@@ -120,6 +122,10 @@ $ source env.bash
 $ python3 -m spider_admin_pro.run
 
 ```
+
+[注意]：
+
+为了简化配置复杂度，方式2：env环境变量，计划将在下一版本移除
 
 3、自定义配置
 
@@ -329,7 +335,9 @@ spider-admin-pro项目主要目录结构：
 ```
 
 ## 经验总结
+
 Scrapyd 不能直接暴露在外网
+
 1. 其他人通过deploy部署可以将代码部署到你的机器上，如果是root用户运行，还会在你机器上做其他的事情
 2. 还有运行日志中会出现配置文件中的信息，存在信息泄露的危险
 
@@ -371,3 +379,21 @@ Scrapyd 不能直接暴露在外网
 ![](https://github.com/mouday/spider-admin-pro/raw/master/doc/img/logs.png)
 
 
+## 二次开发
+
+```bash
+git clone https://github.com/mouday/spider-admin-pro.git
+
+cd spider-admin-pro
+
+python3 dev.py
+```
+
+## 安装升级
+```
+pip3 install -U spider-admin-pro -i https://pypi.org/simple
+```
+
+## 更新日志
+
+1. 2021-09-03 [bugfix]修复【任务列表】运行中项目无法取消的bug
