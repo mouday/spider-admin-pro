@@ -397,3 +397,8 @@ pip3 install -U spider-admin-pro -i https://pypi.org/simple
 ## 更新日志
 
 1. 2021-09-03 [bugfix]修复【任务列表】运行中项目无法取消的bug
+
+
+## Stargazers over time
+
+[![Stargazers over time](https://starchart.cc/mouday/spider-admin-pro.svg)](https://starchart.cc/mouday/spider-admin-pro)
