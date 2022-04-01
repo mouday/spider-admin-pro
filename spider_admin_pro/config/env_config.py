@@ -27,7 +27,7 @@ with env.prefixed(pre_fix):
     BASIC_AUTH_EXPIRES = env.int('EXPIRES', detault_config.BASIC_AUTH_EXPIRES)
 
     # scrapyd地址, 结尾不要加斜杆
-    SCRAPYD_SERVER = env.str('SCRAPYD', detault_config.SCRAPYD_SERVER)
+    SCRAPYD_SERVER = env.str('SCRAPYD_SERVER', detault_config.SCRAPYD_SERVER)
 
     # 调度器 调度历史存储设置
     # mysql or sqlite and other, any database for peewee support

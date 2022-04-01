@@ -34,7 +34,7 @@ BASIC_AUTH_JWT_KEY = config.get('JWT_KEY', env_config.BASIC_AUTH_JWT_KEY)
 BASIC_AUTH_EXPIRES = config.get('EXPIRES', env_config.BASIC_AUTH_EXPIRES)
 
 # scrapyd地址, 结尾不要加斜杆
-SCRAPYD_SERVER = config.get('SCRAPYD', env_config.SCRAPYD_SERVER)
+SCRAPYD_SERVER = config.get('SCRAPYD_SERVER', env_config.SCRAPYD_SERVER)
 
 # 调度器 调度历史存储设置
 # mysql or sqlite and other, any database for peewee support

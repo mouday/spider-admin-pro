@@ -398,6 +398,9 @@ pip3 install -U spider-admin-pro -i https://pypi.org/simple
 
 1. 2021-09-03 [bugfix]修复【任务列表】运行中项目无法取消的bug
 
+2. 2022-04-01 [bugfix] 当修改scrapyd的端口号后，在配置文件中指定scrapyd为修改后的端口号。配置文件不生效
+
+感谢：@洒脱的狂者 发现的问题及解决办法
 
 ## Stargazers over time
 
