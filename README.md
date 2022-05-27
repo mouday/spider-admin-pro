@@ -51,7 +51,7 @@ $ pip3 install spider-admin-pro
 $ python3 -m spider_admin_pro.run
 ```
 
-方式二：
+方式二：(推荐，可能由于PIP新版本未及时发布，github代码会保持最新)
 ```bash
 $ git clone https://github.com/mouday/spider-admin-pro.git
 
