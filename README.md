@@ -42,6 +42,8 @@ Spider Admin Pro 是[Spider Admin](https://github.com/mouday/SpiderAdmin)的升�
 
 本项目基于Python3.7.0 开发，所以推荐使用Python3.7.0及其以上版本
 
+> 注意：python3.10版本，库collections 停用了，所以不能运行该项目
+
 方式一：
 ```bash
 $ pip3 install spider-admin-pro
@@ -401,6 +403,8 @@ pip3 install -U spider-admin-pro -i https://pypi.org/simple
 2. 2022-04-01 [bugfix] 当修改scrapyd的端口号后，在配置文件中指定scrapyd为修改后的端口号。配置文件不生效
 
 感谢：@洒脱的狂者 发现的问题及解决办法
+
+2. 2022-05-27 [update] requirements.txt 文件中增加 flask_cors 依赖
 
 ## Stargazers over time
 
