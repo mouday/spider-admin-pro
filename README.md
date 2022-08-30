@@ -378,6 +378,14 @@ Scrapyd 不能直接暴露在外网
 
 ![](https://github.com/mouday/spider-admin-pro/raw/master/doc/img/qq.jpg)
 
+## 项目赞助
+
+| 日期 | 姓名 | 金额 | 
+| - | - | - |
+| 2022-08-30 | [@yangxiaozhe13](https://github.com/yangxiaozhe13) | 88.00
+| 2022-04-16 | [@realhellosunsun](https://github.com/realhellosunsun) | 188.00
+
+
 ## 项目截图
 
 ![](https://github.com/mouday/spider-admin-pro/raw/master/doc/img/dashboard.png)
@@ -417,3 +425,10 @@ pip3 install -U spider-admin-pro -i https://pypi.org/simple
 ## Stargazers over time
 
 [![Stargazers over time](https://starchart.cc/mouday/spider-admin-pro.svg)](https://starchart.cc/mouday/spider-admin-pro)
+
+
+社区其他优秀工具推荐
+
+https://github.com/DormyMo/SpiderKeeper
+
+
