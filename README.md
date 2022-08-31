@@ -428,6 +428,6 @@ pip3 install -U spider-admin-pro -i https://pypi.org/simple
 
 社区其他优秀工具推荐
 
-https://github.com/DormyMo/SpiderKeeper
-
+- https://github.com/DormyMo/SpiderKeeper
+- https://github.com/my8100/scrapydweb
 
