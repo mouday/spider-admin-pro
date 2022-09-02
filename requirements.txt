@@ -11,3 +11,4 @@ APScheduler>=3.6.0
 ip-area>=0.0.1
 user-agents>=2.2.0
 flask_cors>=3.0.8
+SQLAlchemy>=1.4.39

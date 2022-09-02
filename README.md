@@ -55,7 +55,14 @@ $ python3 -m spider_admin_pro.run
 ```bash
 $ git clone https://github.com/mouday/spider-admin-pro.git
 
+# 安装依赖（建议：最好新建一个虚拟环境）
+$ pip3 install -r requirements.txt 
+
+# 以生产模式运行
 $ python3 spider_admin_pro/run.py
+
+# 以开发模式运行
+$ python3 dev.py
 ```
 
 ## 配置参数
