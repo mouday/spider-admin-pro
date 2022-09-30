@@ -44,7 +44,10 @@ Spider Admin Pro 是[Spider Admin](https://github.com/mouday/SpiderAdmin)的升�
 
 > 注意：python3.10版本，库collections 停用了，所以不能运行该项目
 
+运行项目前，请先确保[scrapyd](https://pengshiyu.blog.csdn.net/article/details/79842514)服务已经启动
+
 方式一：
+
 ```bash
 $ pip3 install spider-admin-pro
 
@@ -54,6 +57,8 @@ $ python3 -m spider_admin_pro.run
 方式二：(推荐，可能由于PIP新版本未及时发布，github代码会保持最新)
 ```bash
 $ git clone https://github.com/mouday/spider-admin-pro.git
+
+$ cd spider-admin-pro
 
 # 安装依赖（建议：最好新建一个虚拟环境）
 $ pip3 install -r requirements.txt 
