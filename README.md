@@ -68,7 +68,10 @@ $ python3 spider_admin_pro/run.py
 
 # 以开发模式运行
 $ python3 dev.py
+
 ```
+
+> Windows系统环境变量中可能没有`python3`,可以试试`python dev.py`
 
 ## 配置参数
 
