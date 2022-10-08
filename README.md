@@ -71,7 +71,7 @@ $ python3 dev.py
 
 ```
 
-> Windows系统环境变量中可能没有`python3`,可以试试`python dev.py`
+> Windows系统环境变量中可能没有`python3`,可以试试`python dev.py`。感谢[@whobywind](https://github.com/whobywind)
 
 ## 配置参数
 
