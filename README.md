@@ -447,3 +447,13 @@ pip3 install -U spider-admin-pro -i https://pypi.org/simple
 - https://github.com/DormyMo/SpiderKeeper
 - https://github.com/my8100/scrapydweb
 - https://github.com/ouqiang/gocron 使用Go语言开发的轻量级定时任务集中调度和管理系统, 用于替代Linux-crontab
+
+## 其他问题
+
+1、windows系统 scrapyd 启动失败，可能缺少依赖pywin32
+
+```
+pip install pywin32
+```
+
+感谢[@whobywind](https://github.com/whobywind)，提供的解决方案
