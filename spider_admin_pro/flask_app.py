@@ -27,7 +27,7 @@ class CustomJSONEncoder(JSONEncoder):
 class CustomRequest(Request):
     @property
     def json(self):
-        data = self.get_json()
+        data = self.get_json(force=True)
 
         if not data:
             data = {}
