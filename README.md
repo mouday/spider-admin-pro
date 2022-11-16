@@ -468,7 +468,9 @@ pip install pywin32
 
 某爬虫大佬也推荐过一个不错的动态代理 [云立方](http://www.yunlifang.cn/?from=spider-admin-pro)
 
-[![](https://www.yunlifang.cn/img/logo.png)](http://www.yunlifang.cn/?from=spider-admin-pro)
+<a href="http://www.yunlifang.cn/?from=spider-admin-pro" target="_blank" style="display: inline-block; background-color: #000;">
+<img src="https://www.yunlifang.cn/img/logo.png">
+</a>
 
 找客服发送暗号：【爬虫推广】可以获取打折优惠
 
