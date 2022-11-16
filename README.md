@@ -457,3 +457,21 @@ pip install pywin32
 ```
 
 感谢[@whobywind](https://github.com/whobywind)，提供的解决方案
+
+2、网站有ip校验，刚访问几个请求就被禁止访问？
+
+同一个ip可能有被封的风险，可以使用代理ip去请求，有免费和付费。
+
+如果是个人使用，可以找一些免费的ip临时使用
+
+如果是企业项目，可以使用付费代理ip
+
+某爬虫大佬也推荐过一个不错的动态代理 [云立方](http://www.yunlifang.cn/?from=spider-admin-pro)
+
+找客服发送暗号：【爬虫推广】可以获取打折优惠
+
+具体搭建方法在大佬的博客中有详尽说明：
+
+[使用 Tornado+Redis 维护 ADSL 拨号服务器代理池](https://cuiqingcai.com/4596.html)
+
+如果有问题，可以加QQ群，群里的小伙伴会积极解答喔
