@@ -1,9 +1,12 @@
 # Spider Admin Pro
 
-![PyPI](https://img.shields.io/pypi/v/spider-admin-pro.svg)
-![PyPI - Downloads](https://img.shields.io/pypi/dm/spider-admin-pro)
-![PyPI - Python Version](https://img.shields.io/pypi/pyversions/spider-admin-pro)
-![PyPI - License](https://img.shields.io/pypi/l/spider-admin-pro)
+[![PyPI](https://img.shields.io/pypi/v/spider-admin-pro.svg)](https://pypi.org/project/spider-admin-pro)
+[![PyPI - Downloads](https://img.shields.io/pypi/dm/spider-admin-pro)](https://pypi.org/project/spider-admin-pro)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/spider-admin-pro)](https://pypi.org/project/spider-admin-pro)
+[![Docker Image Version (latest semver)](https://img.shields.io/docker/v/mouday/spider-admin-pro?label=docker%20version&sort=semver)](https://hub.docker.com/r/mouday/spider-admin-pro)
+[![Docker Pulls](https://img.shields.io/docker/pulls/mouday/spider-admin-pro)](https://app.travis-ci.com/mouday/spider-admin-pro)
+[![Build Status](https://app.travis-ci.com/mouday/spider-admin-pro.svg?branch=master)](https://app.travis-ci.com/mouday/spider-admin-pro)
+[![PyPI - License](https://img.shields.io/pypi/l/spider-admin-pro)](https://github.com/mouday/spider-admin-pro/blob/master/LICENSE)
 
 ## 简介
 
