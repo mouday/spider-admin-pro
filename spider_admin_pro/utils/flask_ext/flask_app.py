@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import traceback
-from collections import Iterator
+from typing import Iterator
 from datetime import datetime
 
 from flask import Flask, Blueprint, Request
