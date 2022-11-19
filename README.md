@@ -8,6 +8,8 @@
 [![Build Status](https://app.travis-ci.com/mouday/spider-admin-pro.svg?branch=master)](https://app.travis-ci.com/mouday/spider-admin-pro)
 [![PyPI - License](https://img.shields.io/pypi/l/spider-admin-pro)](https://github.com/mouday/spider-admin-pro/blob/master/LICENSE)
 
+![](https://github.com/mouday/spider-admin-pro/raw/master/doc/img/logo.png)
+
 ## 简介
 
 Spider Admin Pro 是[Spider Admin](https://github.com/mouday/SpiderAdmin)的升级版
@@ -28,6 +30,8 @@ Github: [https://github.com/mouday/spider-admin-pro](https://github.com/mouday/s
 Gitee: [https://gitee.com/mouday/spider-admin-pro](https://gitee.com/mouday/spider-admin-pro)
 
 Pypi: [https://pypi.org/project/spider-admin-pro](https://pypi.org/project/spider-admin-pro)
+
+Docker: [https://hub.docker.com/r/mouday/spider-admin-pro](https://hub.docker.com/r/mouday/spider-admin-pro)
 
 ![](https://github.com/mouday/spider-admin-pro/raw/master/doc/img/spider-admin-pro.png)
 
@@ -62,7 +66,6 @@ $ make pro
 
 # 以开发模式运行
 $ make dev
-
 ```
 
 运行项目前，请先确保[scrapyd](https://pengshiyu.blog.csdn.net/article/details/79842514)服务已经启动
@@ -71,6 +74,12 @@ $ make dev
 
 ```bash
 pip install scrapy scrapyd scrapyd-client
+```
+
+方式三：
+
+```bash
+docker run -p 8000:8000 mouday/spider-admin-pro
 ```
 
 ## 配置参数
