@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 
-from spider_admin_pro.flask_app import BlueprintApp
+from spider_admin_pro.utils.flask_ext.flask_app import BlueprintAppApi
 
 from flask import send_file
 
-web = BlueprintApp(
+web = BlueprintAppApi(
     name="web",
     import_name=__name__,
     root_path="web",

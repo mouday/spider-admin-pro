@@ -7,6 +7,7 @@ from spider_admin_pro.api.stats_collection_api import stats_collection_api
 from spider_admin_pro.api.system_info_api import system_api
 from spider_admin_pro.web.main import web
 
+# TODO: 路由集中管理
 # 路由配置
 ROUTERS = {
     '/': web,

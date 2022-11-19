@@ -7,9 +7,10 @@ from pprint import pprint
 
 from flask import request
 
-from spider_admin_pro.flask_app import BlueprintAppApi
+# from spider_admin_pro.flask_app import BlueprintAppApi
 from spider_admin_pro.model.stats_collection_model import StatsCollectionModel
 from spider_admin_pro.service.stats_collection_service import StatsCollectionService
+from spider_admin_pro.utils.flask_ext.flask_app import BlueprintAppApi
 
 stats_collection_api = BlueprintAppApi("stats_collection", __name__)
 

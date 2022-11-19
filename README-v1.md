@@ -1,11 +1,10 @@
-# Spider Admin Pro
+# Spider Admin Pro V1.0
 
 ![PyPI](https://img.shields.io/pypi/v/spider-admin-pro.svg)
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/spider-admin-pro)
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/spider-admin-pro)
 ![PyPI - License](https://img.shields.io/pypi/l/spider-admin-pro)
 
-[Spider Admin Pro V1版本文档](README-v1.md)
 
 Github: [https://github.com/mouday/spider-admin-pro](https://github.com/mouday/spider-admin-pro)
 
@@ -46,11 +45,6 @@ Spider Admin Pro 是[Spider Admin](https://github.com/mouday/SpiderAdmin)的升�
 > 注意：python3.10版本，库collections 停用了，所以不能运行该项目
 
 运行项目前，请先确保[scrapyd](https://pengshiyu.blog.csdn.net/article/details/79842514)服务已经启动
-
-安装scrapy全家桶`[可选]`
-```bash
-pip install scrapy scrapyd scrapyd-client
-```
 
 方式一：
 
@@ -485,15 +479,3 @@ pip install pywin32
 [使用 Tornado+Redis 维护 ADSL 拨号服务器代理池](https://cuiqingcai.com/4596.html)
 
 如果有问题，可以加QQ群，群里的小伙伴会积极解答喔
-
-- v2.0.0
-    - 升级依赖 requirements.txt
-    - 优化启动方式
-    - 优化启动配置
-    - 移除.env环境变量配置，简化配置流程
-    - 移除Flask配置读取，推荐使用`gunicorn`启动服务
-    - 路由统一管理
-    - 全局异常捕获
-    - 接口统一返回
-    - 前后端分离
-    - 可视化参数配置

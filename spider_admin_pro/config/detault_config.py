@@ -4,10 +4,6 @@
 # 默认变量
 #################################
 
-# flask 服务配置
-FLASK_PORT = 5000
-FLASK_HOST = '127.0.0.1'
-
 # 登录账号密码
 BASIC_AUTH_USERNAME = "admin"
 BASIC_AUTH_PASSWORD = "123456"
@@ -28,3 +24,6 @@ JOB_STORES_DATABASE_URL = 'sqlite:///dbs/apscheduler.db'
 
 # 日志文件夹
 LOG_DIR = 'logs'
+
+# 数据存储文件夹
+DATABASE_DIR = 'dbs'

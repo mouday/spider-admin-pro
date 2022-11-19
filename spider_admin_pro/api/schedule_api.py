@@ -5,7 +5,7 @@
 
 from flask import request
 
-from spider_admin_pro.flask_app import BlueprintAppApi
+from spider_admin_pro.utils.flask_ext.flask_app import BlueprintAppApi
 from spider_admin_pro.utils.scheduler_util import SchedulerUtil
 from spider_admin_pro.service.auth_service import AuthService
 from spider_admin_pro.service.schedule_service import ScheduleService, scheduler

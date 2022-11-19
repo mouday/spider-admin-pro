@@ -4,41 +4,27 @@ from collections import Iterator
 from datetime import datetime
 
 from flask import Flask, Blueprint, Request
-from flask.json import JSONEncoder
+
 from peewee import ModelSelect
 
 from spider_admin_pro.api_result import ApiResult
 from spider_admin_pro.exceptions.api_exception import ApiException
-
-
-class CustomJSONEncoder(JSONEncoder):
-    DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S"
-
-    def default(self, o):
-        if isinstance(o, ModelSelect):
-            return list(o)
-
-        if isinstance(o, datetime):
-            return o.strftime(self.DATETIME_FORMAT)
-
-        return super().default(o)
-
-
-class CustomRequest(Request):
-    @property
-    def json(self):
-        data = self.get_json(force=True)
-
-        if not data:
-            data = {}
-
-        return data
+from spider_admin_pro.utils.flask_ext.json.json_encoder import JSONEncoder
+from spider_admin_pro.utils.flask_ext.json.json_provider import JSONProvider
+from spider_admin_pro.utils.flask_ext.request import FlaskRequest
 
 
 class FlaskApp(Flask):
-    json_encoder = CustomJSONEncoder
+    """
+    扩展Flask
+    """
+    # Flask <=2.0.0
+    json_encoder = JSONEncoder
 
-    request_class = CustomRequest
+    # Flask > 2.0.0
+    json_provider_class = JSONProvider
+
+    request_class = FlaskRequest
 
     def get(self, rule, **options):
         return self.route(rule, methods=['GET'], **options)

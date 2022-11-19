@@ -5,7 +5,7 @@
 """
 from flask import request
 
-from spider_admin_pro.flask_app import BlueprintAppApi
+from spider_admin_pro.utils.flask_ext.flask_app import BlueprintAppApi
 from spider_admin_pro.service.action_history_service import ActionHistoryService
 
 action_history_api = BlueprintAppApi("action_history_api", __name__)

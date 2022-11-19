@@ -3,8 +3,9 @@ from flask import request, make_response
 from flask_cors import CORS
 from werkzeug.middleware.proxy_fix import ProxyFix
 
-from spider_admin_pro.flask_app import FlaskApp
+
 from spider_admin_pro.router import register_blueprint
+from spider_admin_pro.utils.flask_ext.flask_app import FlaskApp
 
 app = FlaskApp(__name__, static_folder=None)
 CORS(app, supports_credentials=True)
