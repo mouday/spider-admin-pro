@@ -9,8 +9,8 @@ name: Docker Publish
 on:
   release:
     types: [published]
-#  push:
-#    branch: ['master']
+  push:
+    branch: ['master']
 
 jobs:
   docker:
