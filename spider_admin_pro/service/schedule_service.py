@@ -113,7 +113,7 @@ class ScheduleService(object):
             ScheduleHistoryModel.create_time.desc()
         ).paginate(page, size).dicts()
 
-        return rows
+        return list(rows)
 
     @classmethod
     def get_log_list_with_stats(cls, page=1, size=20,
