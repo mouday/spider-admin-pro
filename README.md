@@ -47,8 +47,13 @@ $ pip3 install spider-admin-pro
 # 可选
 $ pip3 install -U spider-admin-pro -i https://pypi.org/simple
 
-# 运行启动
+# Linux macOS 运行启动
 $ gunicorn 'spider_admin_pro.main:app'
+
+# windows 环境使用waitress 替换 gunicorn
+$ pip install waitress
+
+$ waitress-serve 'spider_admin_pro.main:app'
 ```
 
 方式二：
