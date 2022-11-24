@@ -53,7 +53,7 @@ $ gunicorn 'spider_admin_pro.main:app'
 # windows 环境使用waitress 替换 gunicorn
 $ pip install waitress
 
-$ waitress-serve 'spider_admin_pro.main:app'
+$ waitress-serve --listen=127.0.0.1:8000 'spider_admin_pro.main:app'
 ```
 
 方式二：
