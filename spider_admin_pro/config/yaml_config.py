@@ -13,7 +13,7 @@ from spider_admin_pro.config import detault_config
 
 config_file = os.path.join(os.getcwd(), 'config.yml')
 
-logger.info('config_file: %s', config_file)
+# logger.info('config_file: %s', config_file)
 
 if os.path.exists(config_file):
     f = open(config_file, "rb")
