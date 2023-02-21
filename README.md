@@ -42,6 +42,16 @@ Docker: [https://hub.docker.com/r/mouday/spider-admin-pro](https://hub.docker.co
 方式一：
 
 ```bash
+$ python3 --version
+Python 3.7.0
+
+# 创建名为 venv 的虚拟环境
+$ python3 -m venv venv
+
+# 激活虚拟环境
+$ source venv/bin/activate
+
+# 安装spider-admin-pro
 $ pip3 install spider-admin-pro
 
 # 可选
@@ -66,11 +76,14 @@ $ cd spider-admin-pro
 # 安装依赖（建议：最好新建一个虚拟环境）
 $ pip3 install -r requirements.txt 
 
+# Linux/macOS 以开发模式运行
+$ make dev
+
+# windows 以开发模式运行
+$ python3 dev.py
+
 # 以生产模式运行
 $ make pro
-
-# 以开发模式运行
-$ make dev
 ```
 
 运行项目前，请先确保[scrapyd](https://pengshiyu.blog.csdn.net/article/details/79842514)服务已经启动
@@ -156,6 +169,7 @@ $ python -c 'import base64;import os;print(base64.b64encode(os.urandom(32)).deco
 
 【私有仓库】基于Vue的前端项目spider-admin-pro-web: [https://github.com/mouday/spider-admin-pro-web](https://github.com/mouday/spider-admin-pro-web)
 
+> 备注：前端Vue项目，可入QQ群发送github用户名获取权限
 
 spider-admin-pro项目主要目录结构：
 
@@ -263,8 +277,8 @@ pip install pywin32
 
 某爬虫大佬也推荐过一个不错的动态代理 [云立方](http://www.yunlifang.cn/?from=spider-admin-pro)
 
-<a href="http://www.yunlifang.cn/?from=spider-admin-pro" target="_blank" style="display: inline-block; background-color: #000;">
-<img src="https://www.yunlifang.cn/img/logo.png">
+<a href="http://www.yunlifang.cn?u=mouday" target="_blank" style="display: inline-block; background-color: #000;">
+<img src="https://www.yunlifang.cn/user/img/720X90.png">
 </a>
 
 找客服发送暗号：【爬虫推广】可以获取打折优惠

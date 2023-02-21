@@ -8,7 +8,7 @@ import os
 
 import yaml
 
-from spider_admin_pro.logger import logger
+# from spider_admin_pro.logger import logger
 from spider_admin_pro.config import detault_config
 
 config_file = os.path.join(os.getcwd(), 'config.yml')

@@ -2,6 +2,7 @@
 import json
 import logging
 import uuid
+from logging.handlers import RotatingFileHandler
 
 from apscheduler.jobstores.sqlalchemy import SQLAlchemyJobStore
 from apscheduler.schedulers.background import BackgroundScheduler
@@ -15,7 +16,14 @@ from spider_admin_pro.utils.time_util import TimeUtil
 
 apscheduler_logger = logging.getLogger('apscheduler')
 
-file_handler = logging.FileHandler(resolve_log_file('apscheduler.log'))
+# file_handler = logging.FileHandler(resolve_log_file('apscheduler.log'))
+file_handler = RotatingFileHandler(
+    filename=resolve_log_file('apscheduler.log'),
+    maxBytes=1024 * 1024 * 1,  # 1MB
+    backupCount=1,
+    encoding='utf-8'
+)
+
 apscheduler_logger.addHandler(file_handler)
 
 # ==============================================

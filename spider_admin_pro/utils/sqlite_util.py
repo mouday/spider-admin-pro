@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 import os
 from urllib.parse import urlparse
-import logging
-
-logger = logging.getLogger(__name__)
+# import logging
+# logger = logging.getLogger(__name__)
+from spider_admin_pro.logger import logger
 
 
 def make_sqlite_dir(sqlite_url):

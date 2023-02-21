@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import logging
-
+from logging.handlers import RotatingFileHandler
 from peewee import *
 from playhouse.db_url import connect, register_database
 from playhouse.shortcuts import ReconnectMixin
@@ -14,7 +14,13 @@ from spider_admin_pro.utils.sqlite_util import make_sqlite_dir
 peewee_logger = logging.getLogger('peewee')
 peewee_logger.setLevel(logging.DEBUG)
 
-file_handler = logging.FileHandler(resolve_log_file('peewee.log'))
+# file_handler = logging.FileHandler(resolve_log_file('peewee.log'))
+file_handler = RotatingFileHandler(
+    filename=resolve_log_file('peewee.log'),
+    maxBytes=1024 * 1024 * 1,  # 1MB
+    backupCount=1,
+    encoding='utf-8'
+)
 peewee_logger.addHandler(file_handler)
 
 
