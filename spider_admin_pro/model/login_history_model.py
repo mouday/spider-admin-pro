@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 from datetime import datetime
 
-from peewee import CharField, IntegerField, DateTimeField, BooleanField
+from peewee import CharField, IntegerField, DateTimeField, BooleanField, AutoField
 
 from spider_admin_pro.model.base import BaseModel
 
 
 class LoginHistoryModel(BaseModel):
     """登录日志"""
-    id = IntegerField(primary_key=True)
+    id = AutoField(primary_key=True)
 
     username = CharField(max_length=32)
     ip = CharField(max_length=32)

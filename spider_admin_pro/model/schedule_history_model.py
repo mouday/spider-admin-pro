@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 from datetime import datetime
 
-from peewee import CharField, IntegerField, DateTimeField
+from peewee import CharField, IntegerField, DateTimeField, AutoField
 
 from spider_admin_pro.model.base import BaseModel
 
 
 class ScheduleHistoryModel(BaseModel):
     """调度历史存储"""
-    id = IntegerField(primary_key=True)
+    id = AutoField(primary_key=True)
 
     project = CharField(max_length=32)
     spider = CharField(max_length=64)

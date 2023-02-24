@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 from datetime import datetime
 
-from peewee import CharField, IntegerField, DateTimeField
+from peewee import CharField, IntegerField, DateTimeField, AutoField
 
 from spider_admin_pro.model.base import BaseModel
 
 
 class StatsCollectionModel(BaseModel):
     """运行结果数据收集"""
-    id = IntegerField(primary_key=True)
+    id = AutoField(primary_key=True)
 
     spider_job_id = CharField(max_length=32)
     project = CharField(max_length=32)

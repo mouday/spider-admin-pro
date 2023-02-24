@@ -19,10 +19,13 @@ SCRAPYD_SERVER = 'http://127.0.0.1:6800'
 # mysql or sqlite and other, any database for peewee support
 # doc: http://docs.peewee-orm.com/en/latest/peewee/playhouse.html#database-url
 SCHEDULE_HISTORY_DATABASE_URL = 'sqlite:///dbs/schedule_history.db'
+# pip install pymysql
+# SCHEDULE_HISTORY_DATABASE_URL = 'mysql://root:123456@127.0.0.1:3306/spider_admin'
 
 # 调度器 定时任务存储地址 基于 SQLAlchemy
 # doc: https://docs.sqlalchemy.org/en/13/core/engines.html#database-urls
 JOB_STORES_DATABASE_URL = 'sqlite:///dbs/apscheduler.db'
+# JOB_STORES_DATABASE_URL = 'mysql+pymysql://root:123456@127.0.0.1:3306/spider_admin'
 
 # 日志文件夹
 LOG_DIR = 'logs'
