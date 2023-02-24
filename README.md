@@ -33,6 +33,8 @@ Pypi: [https://pypi.org/project/spider-admin-pro](https://pypi.org/project/spide
 
 Docker: [https://hub.docker.com/r/mouday/spider-admin-pro](https://hub.docker.com/r/mouday/spider-admin-pro)
 
+releases: [https://github.com/mouday/spider-admin-pro/releases](https://github.com/mouday/spider-admin-pro/releases)
+
 ![](https://github.com/mouday/spider-admin-pro/raw/master/doc/img/spider-admin-pro.png)
 
 ## 安装启动
