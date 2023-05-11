@@ -280,7 +280,7 @@ pip install pywin32
 
 如果是企业项目，可以使用付费代理ip
 
-某爬虫大佬也推荐过一个不错的动态代理 [云立方](http://www.yunlifang.cn/?from=spider-admin-pro)
+某爬虫大佬也推荐过一个不错的动态代理 [云立方](http://www.yunlifang.cn?u=mouday)
 
 <a href="http://www.yunlifang.cn?u=mouday" target="_blank" style="display: inline-block; background-color: #000;">
 <img src="https://www.yunlifang.cn/user/img/720X90.png">
@@ -293,6 +293,29 @@ pip install pywin32
 [使用 Tornado+Redis 维护 ADSL 拨号服务器代理池](https://cuiqingcai.com/4596.html)
 
 如果有问题，可以加QQ群，群里的小伙伴会积极解答喔
+
+3、为什么外网访问不到，如何修改端口号
+
+增加`--bind` 参数
+
+格式
+
+```bash
+--bind 监听地址:监听端口号
+```
+
+例如
+
+```bash
+# 启动运行
+$ gunicorn 'spider_admin_pro.main:app'
+
+# 支持外网可访问，云服务器（阿里云或腾讯云）需要设置安全组 
+# 默认内网访问 --bind 127.0.0.1:8000
+$ gunicorn --bind '0.0.0.0:8000' 'spider_admin_pro.main:app'
+```
+
+更多设置，可参考[gunicorn](https://docs.gunicorn.org/en/stable/index.html)
 
 ## 更新日志
 
