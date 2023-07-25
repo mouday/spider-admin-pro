@@ -227,11 +227,12 @@ Scrapyd 不能直接暴露在外网
 
 关注本项目的小伙伴越来越多，为了更好地交流沟通，可以加入群聊
 
-群号:1074075691
+- 一群: 1074075691（已满）
+- 二群: 864983297
 
 问题：邀请码 答案：SpiderAdmin
 
-<img src="https://github.com/mouday/spider-admin-pro/raw/master/doc/img/qq.jpg" width="300"/>
+<img src="https://github.com/mouday/spider-admin-pro/raw/master/doc/img/qq-2.jpg" width="300"/>
 
 ## 项目赞助
 
