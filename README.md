@@ -320,6 +320,16 @@ $ gunicorn --bind '0.0.0.0:8000' 'spider_admin_pro.main:app'
 
 更多设置，可参考[gunicorn](https://docs.gunicorn.org/en/stable/index.html)
 
+4、提示缺少libfile
+
+群友 `@Yuan、红尘美` 提供的解决方法
+
+安装依赖
+
+```bash
+yum install libffi-devel -y
+```
+
 ## 更新日志
 
 - v2.0.3
