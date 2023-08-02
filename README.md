@@ -12,34 +12,22 @@
 
 ## 简介
 
-Spider Admin Pro 是[Spider Admin](https://github.com/mouday/SpiderAdmin)的升级版
+Spider Admin Pro 是[Spider Admin](https://github.com/mouday/SpiderAdmin)的升级版，一个可视化的Scrapy爬虫管理平台，依赖于Scrapyd
 
-1. 简化了一些功能；
-2. 优化了前端界面，基于Vue的组件化开发；
-3. 优化了后端接口，对后端项目进行了目录划分；
-4. 整体代码利于升级维护。
-5. 目前仅对Python3进行了支持
-6. 路由统一管理
-7. 全局异常捕获
-8. 接口统一返回
-9. 前后端分离
-10. 可视化参数配置
+- Github: [https://github.com/mouday/spider-admin-pro](https://github.com/mouday/spider-admin-pro)
+- Gitee: [https://gitee.com/mouday/spider-admin-pro](https://gitee.com/mouday/spider-admin-pro)
 
-Github: [https://github.com/mouday/spider-admin-pro](https://github.com/mouday/spider-admin-pro)
-
-Gitee: [https://gitee.com/mouday/spider-admin-pro](https://gitee.com/mouday/spider-admin-pro)
-
-Pypi: [https://pypi.org/project/spider-admin-pro](https://pypi.org/project/spider-admin-pro)
-
-Docker: [https://hub.docker.com/r/mouday/spider-admin-pro](https://hub.docker.com/r/mouday/spider-admin-pro)
-
-releases: [https://github.com/mouday/spider-admin-pro/releases](https://github.com/mouday/spider-admin-pro/releases)
+- Pypi: [https://pypi.org/project/spider-admin-pro](https://pypi.org/project/spider-admin-pro)
+- Docker: [https://hub.docker.com/r/mouday/spider-admin-pro](https://hub.docker.com/r/mouday/spider-admin-pro)
+- releases: [https://github.com/mouday/spider-admin-pro/releases](https://github.com/mouday/spider-admin-pro/releases)
 
 ![](https://github.com/mouday/spider-admin-pro/raw/master/doc/img/spider-admin-pro.png)
 
 ## 安装启动
 
 本项目基于Python3.7.0 开发，所以推荐使用Python3.7.0及其以上版本
+
+运行项目前，请先确保[scrapyd](https://pengshiyu.blog.csdn.net/article/details/79842514)服务已经启动
 
 方式一：
 
@@ -88,8 +76,6 @@ $ python3 dev.py
 $ make pro
 ```
 
-运行项目前，请先确保[scrapyd](https://pengshiyu.blog.csdn.net/article/details/79842514)服务已经启动
-
 安装 scrapy 全家桶`[可选]`
 
 ```bash
@@ -111,8 +97,15 @@ docker run -p 8000:8000 mouday/spider-admin-pro
 
 自定义配置
 
-在运行目录下新建`config.yml` 文件，运行时会自动读取该配置文件
+在运行目录下新建`config.yml` 文件，也就是执行启动命令的目录，运行时会自动读取该配置文件
 
+例如
+```bash
+$ ls
+config.yml
+
+$ gunicorn 'spider_admin_pro.main:app'
+```
 > 强烈建议：修改密码和秘钥项
 
 eg:
@@ -121,15 +114,17 @@ eg:
 # 登录账号密码
 USERNAME: admin
 PASSWORD: "123456"
+
+# 秘钥，注意：下一版本将设置为默认
 JWT_KEY: "FU0qnuV4t8rr1pvg93NZL3DLn6sHrR1sCQqRzachbo0="
 
-# token过期时间，单位天
+# token过期时间，单位天。注意：下一版本将设置为默认
 EXPIRES: 7
 
 # scrapyd地址, 结尾不要加斜杆
 SCRAPYD_SERVER: "http://127.0.0.1:6800"
 
-# 日志文件夹
+# 日志文件夹，注意：下一版本将设置为默认
 LOG_DIR: 'logs'
 ```
 
@@ -367,3 +362,16 @@ yum install libffi-devel -y
 - https://github.com/DormyMo/SpiderKeeper
 - https://github.com/my8100/scrapydweb
 - https://github.com/ouqiang/gocron 使用Go语言开发的轻量级定时任务集中调度和管理系统, 用于替代Linux-crontab
+
+## Spider Admin Pro vs. Spider Admin
+
+1. 简化了一些功能；
+2. 优化了前端界面，基于Vue的组件化开发；
+3. 优化了后端接口，对后端项目进行了目录划分；
+4. 整体代码利于升级维护。
+5. 目前仅对Python3进行了支持
+6. 路由统一管理
+7. 全局异常捕获
+8. 接口统一返回
+9. 前后端分离
+10. 可视化参数配置
