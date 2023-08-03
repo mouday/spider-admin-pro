@@ -5,9 +5,11 @@
 #################################
 
 # 登录账号密码
+from spider_admin_pro.utils import secret_util
+
 BASIC_AUTH_USERNAME = "admin"
 BASIC_AUTH_PASSWORD = "123456"
-BASIC_AUTH_JWT_KEY = 'FU0qnuV4t8rr1pvg93NZL3DLn6sHrR1sCQqRzachbo0='
+BASIC_AUTH_JWT_KEY = secret_util.get_random_secret()
 
 # token过期时间，单位天
 BASIC_AUTH_EXPIRES = 7

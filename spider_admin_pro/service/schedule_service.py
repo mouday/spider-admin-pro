@@ -37,6 +37,7 @@ JOBSTORES = {
 }
 
 JOB_DEFAULTS = {
+    'misfire_grace_time': None,
     'coalesce': True,
     'max_instances': 1
 }
