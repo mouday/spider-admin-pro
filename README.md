@@ -115,22 +115,8 @@ eg:
 USERNAME: admin
 PASSWORD: "123456"
 
-# 秘钥，注意：下一版本将设置为默认
-JWT_KEY: "FU0qnuV4t8rr1pvg93NZL3DLn6sHrR1sCQqRzachbo0="
-
-# token过期时间，单位天。注意：下一版本将设置为默认
-EXPIRES: 7
-
 # scrapyd地址, 结尾不要加斜杆
 SCRAPYD_SERVER: "http://127.0.0.1:6800"
-
-# 日志文件夹，注意：下一版本将设置为默认
-LOG_DIR: 'logs'
-```
-
-生成jwt key
-```
-$ python -c 'import base64;import os;print(base64.b64encode(os.urandom(32)).decode())'
 ```
 
 ## 使用扩展
