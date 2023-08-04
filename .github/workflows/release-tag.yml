@@ -1,0 +1,43 @@
+#https://github.com/yyx990803/release-tag
+
+name: Create Release
+
+on:
+  push:
+    tags:
+      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+
+#on:
+#  push:
+#    branch: ['master']
+
+jobs:
+  build:
+    name: Create Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Master
+        uses: actions/checkout@master
+
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install setuptools wheel twine
+
+      - name: Build Dist
+        run: |
+            python setup.py sdist bdist_wheel
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: ./dist/*
+          body: release new version
+          # note you'll typically need to create a personal access token
+          # with permissions to create releases in the other repo
