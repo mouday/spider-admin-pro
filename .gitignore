@@ -13,4 +13,4 @@ dist/
 config.yml
 logs/
 .python-version
-
+venv/
