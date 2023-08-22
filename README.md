@@ -215,6 +215,12 @@ Scrapyd 不能直接暴露在外网
 
 <img src="https://github.com/mouday/spider-admin-pro/raw/master/doc/img/qq-2.jpg" width="300"/>
 
+## 联系作者
+
+微信扫码二维码
+
+<img src="https://raw.githubusercontent.com/mouday/domain-admin/master/image/coding-big-tree.jpg" width="300">
+
 ## 项目赞助
 
 | 日期 | 姓名 | 金额 | 
