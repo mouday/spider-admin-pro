@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from spider_admin_pro.utils import json_util
 
 
 class ApiResult(object):
@@ -23,3 +24,7 @@ class ApiResult(object):
             'code': self.code,
             'msg': self.msg
         }
+
+    def to_json(self):
+        return json_util.json_encode(self.to_dict())
+
