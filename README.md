@@ -117,6 +117,10 @@ PASSWORD: "123456"
 
 # scrapyd地址, 结尾不要加斜杆
 SCRAPYD_SERVER: "http://127.0.0.1:6800"
+
+# 【可选】支持 basic auth @since 2.0.8 
+SCRAPYD_USERNAME: ''
+SCRAPYD_PASSWORD: ''
 ```
 
 ## 使用扩展

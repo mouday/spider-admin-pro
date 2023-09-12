@@ -45,3 +45,7 @@ JOB_STORES_DATABASE_URL = config.get('JOB_STORES_DATABASE_URL', detault_config.J
 LOG_DIR = config.get("LOG_DIR", detault_config.LOG_DIR)
 
 DATABASE_DIR = config.get("DATABASE_DIR", detault_config.DATABASE_DIR)
+
+# scrapyd auth
+SCRAPYD_USERNAME = config.get("SCRAPYD_USERNAME", None)
+SCRAPYD_PASSWORD = config.get("SCRAPYD_PASSWORD", None)

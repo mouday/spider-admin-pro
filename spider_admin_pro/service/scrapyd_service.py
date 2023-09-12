@@ -1,12 +1,33 @@
 # -*- coding: utf-8 -*-
 import json
 
-from spider_admin_pro.config import SCRAPYD_SERVER
+from requests.auth import HTTPBasicAuth
+
+from spider_admin_pro.config import SCRAPYD_SERVER, SCRAPYD_USERNAME, SCRAPYD_PASSWORD
 from scrapyd_api import ScrapydClient
 
 from spider_admin_pro.model.schedule_history_model import ScheduleHistoryModel
 
-client = ScrapydClient(base_url=SCRAPYD_SERVER)
+
+def get_client():
+    """
+    获取scrapyd 客户端的工厂方法
+    @since 2.0.8
+    :return:
+    """
+    params = {
+        'base_url': SCRAPYD_SERVER
+    }
+
+    if SCRAPYD_USERNAME and SCRAPYD_PASSWORD:
+        params = {
+            'auth': HTTPBasicAuth(SCRAPYD_USERNAME, SCRAPYD_PASSWORD)
+        }
+
+    return ScrapydClient(**params)
+
+
+client = get_client()
 
 
 class ScrapydService(object):
