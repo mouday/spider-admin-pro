@@ -20,9 +20,9 @@ def get_client():
     }
 
     if SCRAPYD_USERNAME and SCRAPYD_PASSWORD:
-        params = {
+        params.update({
             'auth': HTTPBasicAuth(SCRAPYD_USERNAME, SCRAPYD_PASSWORD)
-        }
+        })
 
     return ScrapydClient(**params)
 
