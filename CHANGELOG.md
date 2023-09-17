@@ -1,5 +1,5 @@
 - v2.0.10(2023-09-17)
-    - 移除 flask json
+    - 修复：ImportError: cannot import name 'JSONEncoder' from 'flask.json'
 
 - v2.0.9(2023-09-13)
     - fix #12 赋值会丢失 base_url 参数
