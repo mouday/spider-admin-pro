@@ -1,17 +1,13 @@
 # -*- coding: utf-8 -*-
 import traceback
 from typing import Iterator
-from datetime import datetime
 
 import six
-from flask import Flask, Blueprint, Request, Response
-
+from flask import Flask, Blueprint, Response
 from peewee import ModelSelect, Model
 
 from spider_admin_pro.api_result import ApiResult
 from spider_admin_pro.exceptions.api_exception import ApiException
-from spider_admin_pro.utils.flask_ext.json.json_encoder import JSONEncoder
-from spider_admin_pro.utils.flask_ext.json.json_provider import JSONProvider
 from spider_admin_pro.utils.flask_ext.request import FlaskRequest
 
 
@@ -19,12 +15,6 @@ class FlaskApp(Flask):
     """
     扩展Flask
     """
-    # Flask <=2.0.0
-    # json_encoder = JSONEncoder
-
-    # Flask > 2.0.0
-    # json_provider_class = JSONProvider
-
     request_class = FlaskRequest
 
     # 需要转为json的类型
