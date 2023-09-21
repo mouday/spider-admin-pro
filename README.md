@@ -158,6 +158,12 @@ SCRAPYD_PASSWORD: ''
 
 > 备注：前端Vue项目，可入QQ群发送github用户名获取权限
 
+获取前端源码的两个方式：
+
+- 方式一：提供github的用户名
+
+- 方式二：先赞助项目￥10，再提供github的用户名
+
 spider-admin-pro项目主要目录结构：
 
 ```bash
@@ -233,6 +239,7 @@ Scrapyd 不能直接暴露在外网
 | 2022-08-30 | [@yangxiaozhe13](https://github.com/yangxiaozhe13) | ￥88.00
 | 2022-09-01 | [@robot-2233](https://github.com/robot-2233) | ￥88.00
 | 2023-05-09 | 埃菲尔没有塔尖 | ￥68.80
+| 2023-09-21 | [@burujiuzheyang](https://github.com/burujiuzheyang) | ￥50.80
 
 ## 项目截图
 
