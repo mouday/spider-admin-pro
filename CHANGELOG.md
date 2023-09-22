@@ -1,3 +1,6 @@
+- v2.0.11(2023-09-22)
+    - 修复 运行日志显示异常
+
 - v2.0.10(2023-09-17)
     - 修复：ImportError: cannot import name 'JSONEncoder' from 'flask.json'
 
