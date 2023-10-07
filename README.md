@@ -240,6 +240,7 @@ Scrapyd 不能直接暴露在外网
 | 2022-09-01 | [@robot-2233](https://github.com/robot-2233) | ￥88.00
 | 2023-05-09 | 埃菲尔没有塔尖 | ￥68.80
 | 2023-09-21 | [@burujiuzheyang](https://github.com/burujiuzheyang) | ￥50.00
+| 2023-10-07 | [@Lnine9](https://github.com/Lnine9) | ￥20.00
 
 ## 项目截图
 
