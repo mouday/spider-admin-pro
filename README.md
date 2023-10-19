@@ -243,6 +243,10 @@ Scrapyd 不能直接暴露在外网
 | 2023-10-07 | [@Lnine9](https://github.com/Lnine9) | ￥20.00
 | 2023-10-09 | [@xiaoran-xr](https://github.com/xiaoran-xr) | ￥20.00
 | 2023-10-10 | [@hsdanbai](https://github.com/hsdanbai) | ￥20.00
+| 2023-10-19 | [@shuiniu86](https://github.com/shuiniu86) | ￥50.00
+
+
+<img src="https://raw.githubusercontent.com/mouday/domain-admin/master/doc/img/alipay.jpg" width="300">
 
 ## 项目截图
 
