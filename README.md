@@ -231,6 +231,8 @@ Scrapyd 不能直接暴露在外网
 
 <img src="https://raw.githubusercontent.com/mouday/domain-admin/master/image/coding-big-tree.jpg" width="300">
 
+扫描二维码后，回复：Python，即可进入Python技术交流群，和技术大佬们学习交流
+
 ## 项目赞助
 
 | 日期 | 姓名 | 金额 | 
