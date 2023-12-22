@@ -85,7 +85,8 @@ pip install scrapy scrapyd scrapyd-client
 方式三：
 
 ```bash
-docker run -p 8000:8000 mouday/spider-admin-pro
+vim config.yaml # 配置文件文件内容见⬇️：配置参数
+docker run -e TZ=Asia/Shanghai -p 8000:8000 -v ./config.yml:/app/config.yml mouday/spider-admin-pro
 ```
 
 ## 配置参数
