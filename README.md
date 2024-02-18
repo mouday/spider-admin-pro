@@ -251,6 +251,7 @@ Scrapyd 不能直接暴露在外网
 | 2023-11-13 | [@xuedipiaofei](https://github.com/xuedipiaofei) | ￥50.00
 | 2024-01-06 | [@if-always](https://github.com/if-always) | ￥10.00
 | 2024-01-21 | [@dydwgmcnl4241](https://github.com/dydwgmcnl4241) | ￥10.00
+| 2024-02-18 | [@zhaolipo](https://github.com/zhaolipo) | ￥10.00
 
 
 <img src="https://github.com/mouday/spider-admin-pro/raw/master/doc/img/alipay.jpg" width="300">
