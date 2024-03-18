@@ -256,6 +256,7 @@ Scrapyd 不能直接暴露在外网
 | 2024-02-20 | 没事干的小伙子 | ￥8.88
 | 2024-02-20 | [@ning-0217](https://github.com/ning-0217) | ￥50.00
 | 2024-03-08 | [@zhaolipo](https://github.com/zhaolipo) | ￥20.00
+| 2024-03-18 | [@magiceric](https://github.com/magiceric) | ￥88.00
 
 <img src="https://github.com/mouday/spider-admin-pro/raw/master/doc/img/alipay.jpg" width="300">
 
