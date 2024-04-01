@@ -12,6 +12,8 @@ file_handler = RotatingFileHandler(
     encoding='utf-8'
 )
 
-# logger.addHandler(logging.StreamHandler())
+logger.addHandler(logging.StreamHandler())
+
 logger.addHandler(file_handler)
+
 logger.setLevel(logging.DEBUG)

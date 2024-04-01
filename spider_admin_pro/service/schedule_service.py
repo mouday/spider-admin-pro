@@ -2,6 +2,7 @@
 import json
 import logging
 import uuid
+from datetime import datetime, timedelta
 from logging.handlers import RotatingFileHandler
 
 from apscheduler.jobstores.sqlalchemy import SQLAlchemyJobStore
@@ -239,5 +240,16 @@ class ScheduleService(object):
             query = query.where(ScheduleHistoryModel.spider_job_id != '')
         elif status == 'error':
             query = query.where(ScheduleHistoryModel.spider_job_id == '')
+
+        return query.execute()
+
+    @classmethod
+    def remove_history_log(cls, days=7):
+        """移除历史日志"""
+        max_datetime = datetime.now() - timedelta(days=days)
+
+        query = ScheduleHistoryModel.delete().where(
+            ScheduleHistoryModel.create_time <= max_datetime
+        )
 
         return query.execute()

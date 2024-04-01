@@ -3,6 +3,7 @@
 """
 spider运行结果数据收集模块
 """
+from datetime import datetime, timedelta
 
 from spider_admin_pro.model.stats_collection_model import StatsCollectionModel
 from spider_admin_pro.utils.time_util import TimeUtil
@@ -93,3 +94,14 @@ class StatsCollectionService(object):
             dct[row['spider_job_id']] = row
 
         return dct
+
+    @classmethod
+    def remove_history_log(cls, days=7):
+        """移除历史日志"""
+        max_datetime = datetime.now() - timedelta(days=days)
+
+        query = StatsCollectionModel.delete().where(
+            StatsCollectionModel.create_time <= max_datetime
+        )
+
+        return query.execute()
