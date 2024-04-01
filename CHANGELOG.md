@@ -1,3 +1,26 @@
+- v2.0.12(2024-04-01)
+    - 新增：自动移除历史日志，默认保留近7天
+    - fix
+    - 完善文档
+    - fix
+    - fix
+    - fix
+    - fix
+    - fix
+    - Merge branch 'master' of github.com:mouday/spider-admin-pro
+    - 更新文档
+    - Closes #10; fix:修复时区找不到的问题 (#15)
+    - 完善文档
+    - 完善文档
+    - fix
+    - fix
+    - fix
+    - fix
+    - fix
+    - fix
+    - fix
+    - 完善文档
+
 - v2.0.11(2023-09-22)
     - 修复 运行日志显示异常
 
