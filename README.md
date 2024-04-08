@@ -165,6 +165,13 @@ SCRAPYD_PASSWORD: ''
 
 - 方式二：先赞助项目￥10，再提供github的用户名
 
+- 方式三：关注微信公众号：
+
+<img src="https://gitee.com/mouday/domain-admin/raw/master/image/coding-big-tree.jpg" width="300">
+
+回复：`spider-admin-web`，获取完整的前端代码
+
+
 spider-admin-pro项目主要目录结构：
 
 ```bash
