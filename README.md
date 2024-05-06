@@ -171,7 +171,7 @@ SCRAPYD_PASSWORD: ''
 
 回复：`spider-admin-web`，获取完整的前端代码
 
-回复：`Python加群`，可加入Python技术交流群，和更多开发者学习交流遇到的问题
+回复：`spider-admin`，可加入Python技术交流群，和更多开发者学习交流遇到的问题
 
 spider-admin-pro项目主要目录结构：
 
