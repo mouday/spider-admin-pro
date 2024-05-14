@@ -1,4 +1,4 @@
 # -*- coding: utf-8 -*-
-from main import app
+from spider_admin_pro.main import app
 
 __all__ = ['app']
