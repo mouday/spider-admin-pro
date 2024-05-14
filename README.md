@@ -48,12 +48,12 @@ $ pip3 install spider-admin-pro
 $ pip3 install -U spider-admin-pro -i https://pypi.org/simple
 
 # Linux macOS 运行启动
-$ gunicorn 'spider_admin_pro.main:app'
+$ gunicorn 'spider_admin_pro:app'
 
 # windows 环境使用waitress 替换 gunicorn
 $ pip install waitress
 
-$ waitress-serve --listen=127.0.0.1:8000 'spider_admin_pro.main:app'
+$ waitress-serve --listen=127.0.0.1:8000 'spider_admin_pro:app'
 ```
 
 方式二：
@@ -105,7 +105,7 @@ docker run -e TZ=Asia/Shanghai -p 8000:8000 -v ./config.yml:/app/config.yml moud
 $ ls
 config.yml
 
-$ gunicorn 'spider_admin_pro.main:app'
+$ gunicorn 'spider_admin_pro:app'
 ```
 > 强烈建议：修改密码和秘钥项
 
@@ -336,11 +336,11 @@ pip install pywin32
 
 ```bash
 # 启动运行
-$ gunicorn 'spider_admin_pro.main:app'
+$ gunicorn 'spider_admin_pro:app'
 
 # 支持外网可访问，云服务器（阿里云或腾讯云）需要设置安全组 
 # 默认内网访问 --bind 127.0.0.1:8000
-$ gunicorn --bind '0.0.0.0:8000' 'spider_admin_pro.main:app'
+$ gunicorn --bind '0.0.0.0:8000' 'spider_admin_pro:app'
 ```
 
 更多设置，可参考[gunicorn](https://docs.gunicorn.org/en/stable/index.html)

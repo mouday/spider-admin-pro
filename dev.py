@@ -5,7 +5,7 @@
 # 预留给windows用户开发使用
 """
 
-from spider_admin_pro.main import app
+from spider_admin_pro import app
 
 if __name__ == '__main__':
     app.run(debug=True)

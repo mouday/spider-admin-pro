@@ -14,3 +14,4 @@ config.yml
 logs/
 .python-version
 venv/
+.venv/
