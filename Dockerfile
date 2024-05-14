@@ -10,4 +10,4 @@ RUN apk add --no-cache --virtual .build-deps gcc musl-dev libffi-dev openssl-dev
     && pip install --no-cache-dir -r requirements.txt \
     && apk del .build-deps
 
-CMD gunicorn --bind '0.0.0.0:8000' 'spider_admin_pro.main:app'
+CMD gunicorn --bind '0.0.0.0:8000' 'spider_admin_pro:app'

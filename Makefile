@@ -3,11 +3,11 @@
 
 # 运行开发环境
 dev:
-	gunicorn --bind '127.0.0.1:5001' --reload 'spider_admin_pro.main:app'
+	gunicorn --bind '127.0.0.1:5001' --reload 'spider_admin_pro:app'
 
 # 运行生产环境
 pro:
-	gunicorn --bind '127.0.0.1:8000' 'spider_admin_pro.main:app'
+	gunicorn --bind '127.0.0.1:8000' 'spider_admin_pro:app'
 
 # 打包
 build:
