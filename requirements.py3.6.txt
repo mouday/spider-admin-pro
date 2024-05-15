@@ -44,3 +44,4 @@ w3lib==2.0.1
 Werkzeug==2.0.3
 zipp==3.6.0
 Flask-Compress==1.15
+whitenoise==6.6.0
