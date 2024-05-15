@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from flask import request, make_response
 from flask_cors import CORS
 from werkzeug.middleware.proxy_fix import ProxyFix
 
@@ -7,21 +6,19 @@ from spider_admin_pro.router import register_blueprint
 from spider_admin_pro.service import system_task_service
 from spider_admin_pro.utils.flask_ext.flask_app import FlaskApp
 from flask_compress import Compress
+from whitenoise import WhiteNoise
+import importlib.resources as R
 
-app = FlaskApp(__name__, static_folder=None)
+app = FlaskApp(__name__, static_folder=None, template_folder=None)
+
+# 中间件、wsgi_app、静态文件处理
 Compress(app)
-CORS(app, supports_credentials=True)
-app.wsgi_app = ProxyFix(app.wsgi_app)
+CORS(app, supports_credentials=True, max_age=6000)
+static_dir = R.files("spider_admin_pro") / "public"
+app.wsgi_app = WhiteNoise(ProxyFix(app.wsgi_app), root=str(static_dir), index_file=True)
 
 # 注册路由
 register_blueprint(app)
-
-
-@app.before_request
-def before_request():
-    """跨域请求会出现options，直接返回即可"""
-    if request.method == "OPTIONS":
-        return make_response()
 
 
 # 启动系统后台任务
