@@ -47,6 +47,7 @@ jobs:
           cd spider_admin_pro_web
           pnpm install --no-frozen-lockfile
           pnpm run build:prod
+          mkdir -p ../spider_admin_pro/spider_admin_pro/public
           cp -r ./dist/* ../spider_admin_pro/spider_admin_pro/public/
 
       - name: Set up Python
