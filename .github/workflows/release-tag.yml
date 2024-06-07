@@ -38,17 +38,12 @@ jobs:
         with:
           version: 7
 
-      - name: Install dependencies
-        run: cd spider_admin_pro_web && pnpm install --no-frozen-lockfile
-
-      - name: Build package
-        run: pnpm run build:prod
-
-      - name: Deploy
-        run: cp -r ./dist/* ../spider_admin_pro/public/
-
-      - name: Clean
-        run: cd ..
+      - name: Build Web
+        run: |
+          cd spider_admin_pro_web
+          pnpm install --no-frozen-lockfile
+          pnpm run build:prod
+          cp -r ./dist/* ../spider_admin_pro/public/
 
       - name: Set up Python
         uses: actions/setup-python@v3
