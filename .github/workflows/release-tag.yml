@@ -17,15 +17,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Master
-        uses: actions/checkout@master
+        uses: actions/checkout@v4
+        with:
+          repository: 'mouday/spider-admin-pro'
+          ref: 'master'
+          path: 'spider_admin_pro'
 
       # 拉取web前端dist的代码
       - name: Checkout Web Dist
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: 'mouday/spider-admin-pro-web'
           ref: 'master'
-          token: ${{ secrets.GH_PAT }}
           path: 'spider_admin_pro_web'
 
       - name: Install Node.js
@@ -43,7 +46,7 @@ jobs:
           cd spider_admin_pro_web
           pnpm install --no-frozen-lockfile
           pnpm run build:prod
-          cp -r ./dist/* ../spider_admin_pro/public/
+          cp -r ./dist/* ../spider_admin_pro/spider_admin_pro/public/
 
       - name: Set up Python
         uses: actions/setup-python@v3
@@ -52,18 +55,16 @@ jobs:
 
       - name: Install dependencies
         run: |
+          cd spider_admin_pro
           python -m pip install --upgrade pip
           pip install setuptools wheel twine
-
-      - name: Build Dist
-        run: |
-            python setup.py sdist bdist_wheel
+          python setup.py sdist bdist_wheel
 
       - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: ./dist/*
+          files: ./spider_admin_pro/dist/*
           body: release new version
           # note you'll typically need to create a personal access token
           # with permissions to create releases in the other repo
