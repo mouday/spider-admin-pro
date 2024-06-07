@@ -122,6 +122,9 @@ SCRAPYD_SERVER: "http://127.0.0.1:6800"
 # 【可选】支持 basic auth @since 2.0.8 
 SCRAPYD_USERNAME: ''
 SCRAPYD_PASSWORD: ''
+
+# 【可选】是否开开启前端静态文件预压缩以提升页面加载速度，默认为True
+COMPRESS_STATIC: True
 ```
 
 ## 使用扩展

@@ -7,8 +7,8 @@ from werkzeug.middleware.proxy_fix import ProxyFix
 from spider_admin_pro.router import register_blueprint
 from spider_admin_pro.service import system_task_service
 from spider_admin_pro.utils.flask_ext.flask_app import FlaskApp
-from spider_admin_pro.utils.statics import compress_statics
 from spider_admin_pro.logger import logger
+from spider_admin_pro.config import COMPRESS_STATIC
 from flask_compress import Compress
 from whitenoise import WhiteNoise
 
@@ -22,10 +22,13 @@ else:
 
     static_path = pkg_resources.resource_filename(__package__, "public")
 
-# 静态文件预压缩
-logger.info("开始静态文件预压缩")
-compress_statics(static_path)
-logger.info("结束静态文件预压缩")
+if COMPRESS_STATIC:
+    # 静态文件预压缩
+    from spider_admin_pro.utils.statics import compress_statics
+    logger.info("开始静态文件预压缩")
+    compress_statics(static_path)
+    logger.info("结束静态文件预压缩")
+
 app = FlaskApp(__name__, static_folder=None, template_folder=None)
 # 为wsgi接口响应添加压缩功能
 Compress(app)
