@@ -22,24 +22,57 @@ jobs:
       id-token: write
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - name: Checkout Master
+        uses: actions/checkout@v4
+        with:
+          repository: 'mouday/spider-admin-pro'
+          ref: 'master'
+          path: 'spider_admin_pro'
+
+      # 拉取web前端dist的代码
+      - name: Checkout Web Dist
+        uses: actions/checkout@v4
+        with:
+          repository: 'mouday/spider-admin-pro-web'
+          ref: 'master'
+          token: ${{ secrets.GH_PAT }}
+          path: 'spider_admin_pro_web'
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2.2.4
+        with:
+          version: 7
+
+      - name: Build Web
+        run: |
+          cd spider_admin_pro_web
+          pnpm install --no-frozen-lockfile
+          pnpm run build:prod
+          mkdir -p ../spider_admin_pro/spider_admin_pro/public
+          cp -r ./dist/* ../spider_admin_pro/spider_admin_pro/public/
+
       - name: Set up Python
         uses: actions/setup-python@v3
         with:
           python-version: '3.x'
+
       - name: Install dependencies
         run: |
+          cd spider_admin_pro
           python -m pip install --upgrade pip
           pip install setuptools wheel twine
-
-      - name: Build
-        run: |
-            python setup.py sdist bdist_wheel --python-tag py2.py3
-            twine check dist/*
+          python setup.py sdist bdist_wheel --python-tag py2.py3
+          twine check dist/*
 
       # Publishing with a Trusted Publisher
       # https://docs.pypi.org/trusted-publishers/using-a-publisher/
       # https://github.com/pypa/gh-action-pypi-publish/
       - name: Publish package distributions to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: spider_admin_pro/dist/
