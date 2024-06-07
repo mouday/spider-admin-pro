@@ -29,6 +29,7 @@ jobs:
         with:
           repository: 'mouday/spider-admin-pro-web'
           ref: 'master'
+          token: ${{ secrets.GH_PAT }}
           path: 'spider_admin_pro_web'
 
       - name: Install Node.js
