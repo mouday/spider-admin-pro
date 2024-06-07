@@ -42,13 +42,13 @@ jobs:
         run: cd spider_admin_pro_web && pnpm install --no-frozen-lockfile
 
       - name: Build package
-        run: pnpm run build
+        run: pnpm run build:prod
 
       - name: Deploy
         run: cp -r ./dist/* ../spider_admin_pro/public/
 
       - name: Clean
-        run: cd .. && rm -rf spider_admin_pro_web
+        run: cd ..
 
       - name: Set up Python
         uses: actions/setup-python@v3
