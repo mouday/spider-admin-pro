@@ -14,6 +14,7 @@ config.yml
 logs/
 .python-version
 venv/
+public/
 .venv/
 spider_admin_pro/public/**/*.br
 spider_admin_pro/public/**/*.gz

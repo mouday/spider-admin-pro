@@ -19,6 +19,37 @@ jobs:
       - name: Checkout Master
         uses: actions/checkout@master
 
+      # 拉取web前端dist的代码
+      - name: Checkout Web Dist
+        uses: actions/checkout@v3
+        with:
+          repository: 'mouday/spider-admin-pro-web'
+          ref: 'master'
+          token: ${{ secrets.GH_PAT }}
+          path: 'spider_admin_pro_web'
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2.2.4
+        with:
+          version: 7
+
+      - name: Install dependencies
+        run: cd spider_admin_pro_web && pnpm install --no-frozen-lockfile
+
+      - name: Build package
+        run: pnpm run build
+
+      - name: Deploy
+        run: cp -r ./dist/* ../spider_admin_pro/public/
+
+      - name: Clean
+        run: cd .. && rm -rf spider_admin_pro_web
+
       - name: Set up Python
         uses: actions/setup-python@v3
         with:
