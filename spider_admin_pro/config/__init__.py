@@ -5,6 +5,7 @@
 """
 
 from .yaml_config import *
+import os
 
 if not os.path.exists(LOG_DIR):
     os.mkdir(LOG_DIR)
