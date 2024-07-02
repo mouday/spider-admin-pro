@@ -158,7 +158,7 @@ COMPRESS_STATIC: True
 
 【公开仓库】基于Flask的后端项目spider-admin-pro: [https://github.com/mouday/spider-admin-pro](https://github.com/mouday/spider-admin-pro)
 
-【私有仓库】基于Vue的前端项目spider-admin-pro-web: [https://github.com/mouday/spider-admin-pro-web](https://github.com/mouday/spider-admin-pro-web)
+【私有仓库】基于Vue的前端项目spider-admin-pro-web: 获取方式往下看
 
 > 备注：前端Vue项目，可入QQ群发送github用户名获取权限
 
