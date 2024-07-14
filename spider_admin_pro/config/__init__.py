@@ -10,6 +10,9 @@ import os
 if not os.path.exists(LOG_DIR):
     os.mkdir(LOG_DIR)
 
+if not os.path.exists(CACHE_DIR):
+    os.mkdir(CACHE_DIR)
+
 
 def resolve_log_file(filename):
     """补全日志文件夹"""

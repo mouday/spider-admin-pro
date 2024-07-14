@@ -15,6 +15,7 @@ logs/
 .python-version
 venv/
 public/
+cache/
 .venv/
 spider_admin_pro/public/**/*.br
 spider_admin_pro/public/**/*.gz

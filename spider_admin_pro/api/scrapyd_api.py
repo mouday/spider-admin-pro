@@ -5,9 +5,10 @@
 
 from flask import request
 
+from spider_admin_pro.model import ScrapydServerModel
 from spider_admin_pro.utils.flask_ext.flask_app import BlueprintAppApi
 from spider_admin_pro.service.auth_service import AuthService
-from spider_admin_pro.service.scrapyd_service import client, ScrapydService
+from spider_admin_pro.service.scrapyd_service import get_client, ScrapydService
 
 scrapyd_api = BlueprintAppApi("scrapyd", __name__)
 
@@ -20,25 +21,43 @@ def before_request():
 
 @scrapyd_api.post('/daemonStatus')
 def daemon_status():
+    scrapyd_server_id = request.json['scrapydServerId']
+    scrapyd_server_row = ScrapydServerModel.get_by_id(scrapyd_server_id)
+
+    client = get_client(scrapyd_server_row)
+
     return client.daemon_status()
 
 
 @scrapyd_api.post('/addVersion')
 def add_version():
-    project = request.form['project']
     egg = request.files['egg']
+    project = request.form['project']
+    scrapyd_server_id = request.form['scrapydServerId']
+    scrapyd_server_row = ScrapydServerModel.get_by_id(scrapyd_server_id)
+
+    client = get_client(scrapyd_server_row)
 
     return client.add_version(project, egg)
 
 
 @scrapyd_api.post('/listProjects')
 def list_projects():
+    scrapyd_server_id = request.json['scrapydServerId']
+    scrapyd_server_row = ScrapydServerModel.get_by_id(scrapyd_server_id)
+
+    client = get_client(scrapyd_server_row)
+
     return client.list_projects()
 
 
 @scrapyd_api.post('/listVersions')
 def list_versions():
     project = request.json['project']
+    scrapyd_server_id = request.json['scrapydServerId']
+    scrapyd_server_row = ScrapydServerModel.get_by_id(scrapyd_server_id)
+
+    client = get_client(scrapyd_server_row)
 
     return client.list_versions_format(project=project)
 
@@ -46,6 +65,11 @@ def list_versions():
 @scrapyd_api.post('/listJobs')
 def list_jobs():
     project = request.json['project']
+    scrapyd_server_id = request.json['scrapydServerId']
+    scrapyd_server_row = ScrapydServerModel.get_by_id(scrapyd_server_id)
+
+    client = get_client(scrapyd_server_row)
+
 
     return client.list_jobs(project=project)
 
@@ -55,6 +79,11 @@ def list_jobs_merge():
     project = request.json['project']
     status = request.json.get('status')
 
+    scrapyd_server_id = request.json['scrapydServerId']
+    scrapyd_server_row = ScrapydServerModel.get_by_id(scrapyd_server_id)
+
+    client = get_client(scrapyd_server_row)
+
     return client.list_jobs_merge(project=project, status=status)
 
 
@@ -63,12 +92,22 @@ def cancel():
     project = request.json['project']
     job = request.json['job']
 
+    scrapyd_server_id = request.json['scrapydServerId']
+    scrapyd_server_row = ScrapydServerModel.get_by_id(scrapyd_server_id)
+
+    client = get_client(scrapyd_server_row)
+
     return client.cancel(project=project, job=job)
 
 
 @scrapyd_api.post('/cancelAllJob')
 def cancel_all_job():
     project = request.json['project']
+
+    scrapyd_server_id = request.json['scrapydServerId']
+    scrapyd_server_row = ScrapydServerModel.get_by_id(scrapyd_server_id)
+
+    client = get_client(scrapyd_server_row)
 
     return client.cancel_all_job(project=project)
 
@@ -77,6 +116,11 @@ def cancel_all_job():
 def list_spiders():
     project = request.json['project']
 
+    scrapyd_server_id = request.json['scrapydServerId']
+    scrapyd_server_row = ScrapydServerModel.get_by_id(scrapyd_server_id)
+
+    client = get_client(scrapyd_server_row)
+
     return client.list_spiders(project=project)
 
 
@@ -84,10 +128,11 @@ def list_spiders():
 def schedule():
     project = request.json['project']
     spider = request.json['spider']
-
+    scrapyd_server_id = request.json['scrapydServerId']
     kwargs = {
         'project': project,
-        'spider': spider
+        'spider': spider,
+        'scrapyd_server_id': scrapyd_server_id
     }
 
     # fix: 记录手动运行日志
@@ -98,6 +143,10 @@ def schedule():
 def delete_version():
     project = request.json['project']
     version = request.json['version']
+    scrapyd_server_id = request.json['scrapydServerId']
+    scrapyd_server_row = ScrapydServerModel.get_by_id(scrapyd_server_id)
+
+    client = get_client(scrapyd_server_row)
 
     return client.delete_version(project=project, version=version)
 
@@ -105,6 +154,10 @@ def delete_version():
 @scrapyd_api.post('/deleteProject')
 def delete_project():
     project = request.json['project']
+    scrapyd_server_id = request.json['scrapydServerId']
+    scrapyd_server_row = ScrapydServerModel.get_by_id(scrapyd_server_id)
+
+    client = get_client(scrapyd_server_row)
 
     return client.delete_project(project=project)
 
@@ -114,12 +167,21 @@ def delete_project():
 ########################
 @scrapyd_api.post('/logs')
 def logs():
+    scrapyd_server_id = request.json['scrapydServerId']
+    scrapyd_server_row = ScrapydServerModel.get_by_id(scrapyd_server_id)
+
+    client = get_client(scrapyd_server_row)
+
     return client.logs()
 
 
 @scrapyd_api.post('/projectLogs')
 def project_logs():
     project = request.json['project']
+    scrapyd_server_id = request.json['scrapydServerId']
+    scrapyd_server_row = ScrapydServerModel.get_by_id(scrapyd_server_id)
+
+    client = get_client(scrapyd_server_row)
 
     return client.project_logs(project=project)
 
@@ -128,6 +190,10 @@ def project_logs():
 def spider_logs():
     project = request.json['project']
     spider = request.json['spider']
+    scrapyd_server_id = request.json['scrapydServerId']
+    scrapyd_server_row = ScrapydServerModel.get_by_id(scrapyd_server_id)
+
+    client = get_client(scrapyd_server_row)
 
     return client.spider_logs(project=project, spider=spider)
 
@@ -137,5 +203,9 @@ def job_log():
     project = request.json['project']
     spider = request.json['spider']
     job = request.json['job']
+    scrapyd_server_id = request.json['scrapydServerId']
+    scrapyd_server_row = ScrapydServerModel.get_by_id(scrapyd_server_id)
+
+    client = get_client(scrapyd_server_row)
 
     return client.job_log(project=project, spider=spider, job=job)

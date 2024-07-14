@@ -9,6 +9,7 @@ from apscheduler.jobstores.sqlalchemy import SQLAlchemyJobStore
 from apscheduler.schedulers.background import BackgroundScheduler
 
 from spider_admin_pro.config import JOB_STORES_DATABASE_URL, resolve_log_file
+from spider_admin_pro.enums.schedule_type_enum import ScheduleTypeEnum
 from spider_admin_pro.model.schedule_history_model import ScheduleHistoryModel
 from spider_admin_pro.service.scrapyd_service import ScrapydService
 from spider_admin_pro.service.stats_collection_service import StatsCollectionService
@@ -51,7 +52,10 @@ scheduler.start()
 class ScheduleService(object):
 
     @classmethod
-    def add_job(cls, project, spider, cron, job_id=None, options=None):
+    def add_job(cls, project, spider, cron,
+                scrapyd_server_id,
+                schedule_type=ScheduleTypeEnum.ONLY_ONE_SERVER,
+                job_id=None, options=None):
         # 必传参数校验
         if not project:
             raise Exception('project is null')
@@ -77,6 +81,8 @@ class ScheduleService(object):
             job_id = cls.get_job_id()
 
         kwargs = {
+            'scrapyd_server_id': scrapyd_server_id,
+            'schedule_type': schedule_type,
             'project': project,
             'spider': spider,
             'cron': cron,

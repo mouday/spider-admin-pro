@@ -6,11 +6,14 @@ from werkzeug.middleware.proxy_fix import ProxyFix
 
 from spider_admin_pro.router import register_blueprint
 from spider_admin_pro.service import system_task_service
+from spider_admin_pro.service.auth_service import AuthService
+from spider_admin_pro.utils import cache_util
 from spider_admin_pro.utils.flask_ext.flask_app import FlaskApp
 from spider_admin_pro.logger import logger
-from spider_admin_pro.config import COMPRESS_STATIC
+from spider_admin_pro.config import COMPRESS_STATIC, BASIC_AUTH_USERNAME, BASIC_AUTH_PASSWORD
 from flask_compress import Compress
 from whitenoise import WhiteNoise
+from spider_admin_pro.version import VERSION
 
 if sys.version_info >= (3, 9):
     import importlib.resources as R
@@ -25,6 +28,7 @@ else:
 if COMPRESS_STATIC:
     # 静态文件预压缩
     from spider_admin_pro.utils.statics import compress_statics
+
     logger.info("开始静态文件预压缩")
     compress_statics(static_path)
     logger.info("结束静态文件预压缩")
@@ -41,3 +45,8 @@ register_blueprint(app)
 # 启动系统后台任务
 system_task_service.start_system_scheduler()
 print(__package__)
+
+logger.info("username: %s", BASIC_AUTH_USERNAME)
+logger.info("password: %s", AuthService.password)
+
+cache_util.get_cache('version.txt', VERSION)

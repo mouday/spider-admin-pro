@@ -29,7 +29,7 @@ class JwtUtil(object):
         :param token: str
         :return:  dict
         """
-        return jwt.decode(jwt=token, key=self.key, algorithms=['HS256'])
+        return jwt.decode(jwt=token.encode(), key=self.key, algorithms=['HS256'])
 
 
 if __name__ == '__main__':

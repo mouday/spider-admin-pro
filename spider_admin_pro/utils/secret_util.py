@@ -26,7 +26,7 @@ def get_random_secret():
         return base64.b64encode(os.urandom(32)).decode()
 
 
-def get_random_password(size=6):
+def get_random_password(size=10):
     """
     生成随机密码
     :param size:

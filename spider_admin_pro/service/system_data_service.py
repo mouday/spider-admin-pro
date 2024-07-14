@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 
 
-from spider_admin_pro.config import SCRAPYD_SERVER
 from spider_admin_pro.service.schedule_service import scheduler
-from spider_admin_pro.service.scrapyd_service import client, ScrapydService
+from spider_admin_pro.service.scrapyd_service import ScrapydService
 from spider_admin_pro.utils.system_info_util import SystemInfoUtil
 from spider_admin_pro.version import VERSION
 
@@ -60,8 +59,10 @@ class SystemDataService(object):
 
         return {
             'scrapyd': {
-                'url': SCRAPYD_SERVER,
-                'status': ScrapydService.get_status()
+                # 'url': SCRAPYD_SERVER,
+                'url': '',
+                # 'status': ScrapydService.get_status()
+                'status': False
             },
             'spider_admin': {
                 'version': VERSION

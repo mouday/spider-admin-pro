@@ -62,12 +62,20 @@ def add_job():
     spider = request.json['spider']
     cron = request.json['cron']
 
+    scrapyd_server_id = request.json['scrapyd_server_id']
+    schedule_type = request.json['schedule_type']
+
     job_id = request.json.get('job_id')
     options = request.json.get('options')
 
     ScheduleService.add_job(
-        project=project, spider=spider, cron=cron,
-        options=options, job_id=job_id
+        project=project,
+        spider=spider,
+        cron=cron,
+        scrapyd_server_id=scrapyd_server_id,
+        schedule_type=schedule_type,
+        options=options,
+        job_id=job_id
     )
 
 

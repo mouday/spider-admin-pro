@@ -3,6 +3,7 @@ from spider_admin_pro.api.action_history_api import action_history_api
 from spider_admin_pro.api.auth_api import auth_api
 from spider_admin_pro.api.schedule_api import schedule_api
 from spider_admin_pro.api.scrapyd_api import scrapyd_api
+from spider_admin_pro.api.scrapyd_server_api import scrapyd_server_api
 from spider_admin_pro.api.stats_collection_api import stats_collection_api
 from spider_admin_pro.api.system_info_api import system_api
 
@@ -11,6 +12,7 @@ from spider_admin_pro.api.system_info_api import system_api
 ROUTERS = {
     "/api/auth": auth_api,
     "/api/scrapyd": scrapyd_api,
+    "/api/scrapydServer": scrapyd_server_api,
     "/api/schedule": schedule_api,
     "/api/system": system_api,
     "/api/statsCollection": stats_collection_api,
