@@ -161,18 +161,32 @@ def schedule_logs():
     project = request.json.get("project")
     spider = request.json.get("spider")
     schedule_job_id = request.json.get("schedule_job_id")
+    scrapyd_server_id = request.json.get("scrapydServerId")
 
     return {
         'list': ScheduleService.get_log_list_with_stats(
-            page=page, size=size, status=status,
-            project=project, spider=spider,
+            scrapyd_server_id=scrapyd_server_id,
+            project=project,
+            spider=spider,
+            page=page,
+            size=size,
+            status=status,
             schedule_job_id=schedule_job_id),
         'total': ScheduleService.get_log_total_count(
-            project=project, spider=spider, schedule_job_id=schedule_job_id),
+            scrapyd_server_id=scrapyd_server_id,
+            project=project,
+            spider=spider,
+            schedule_job_id=schedule_job_id),
         'success': ScheduleService.get_log_success_count(
-            project=project, spider=spider, schedule_job_id=schedule_job_id),
+            scrapyd_server_id=scrapyd_server_id,
+            project=project,
+            spider=spider,
+            schedule_job_id=schedule_job_id),
         'error': ScheduleService.get_log_error_count(
-            project=project, spider=spider, schedule_job_id=schedule_job_id),
+            scrapyd_server_id=scrapyd_server_id,
+            project=project,
+            spider=spider,
+            schedule_job_id=schedule_job_id),
     }
 
 
@@ -183,7 +197,11 @@ def remove_schedule_logs():
     project = request.json.get("project")
     spider = request.json.get("spider")
     schedule_job_id = request.json.get("schedule_job_id")
+    scrapyd_server_id = request.json.get("scrapydServerId")
 
     ScheduleService.remove_log(
-        project=project, spider=spider,
-        schedule_job_id=schedule_job_id, status=status)
+        scrapyd_server_id=scrapyd_server_id,
+        project=project,
+        spider=spider,
+        schedule_job_id=schedule_job_id,
+        status=status)

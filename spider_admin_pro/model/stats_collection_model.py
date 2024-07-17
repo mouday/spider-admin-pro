@@ -10,6 +10,8 @@ class StatsCollectionModel(BaseModel):
     """运行结果数据收集"""
     id = AutoField(primary_key=True)
 
+    scrapyd_server_id = IntegerField(default=0)
+
     spider_job_id = CharField(max_length=32)
     project = CharField(max_length=32)
     spider = CharField(max_length=64)

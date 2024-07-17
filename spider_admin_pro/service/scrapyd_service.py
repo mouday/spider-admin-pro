@@ -61,8 +61,6 @@ class ScrapydService(object):
         else:
             opts = {}
 
-        scrapyd_server_id = 0
-
         try:
             if schedule_type == ScheduleTypeEnum.RANDOM_SERVER:
                 # 随机轮询

@@ -20,6 +20,7 @@ def add_item():
     pprint(request.json)
 
     spider_job_id = request.json['job_id']
+    scrapyd_server_id = request.json['scrapydServerId']
     project = request.json['project']
     spider = request.json['spider']
     item_scraped_count = request.json['item_scraped_count']
@@ -32,6 +33,7 @@ def add_item():
 
     StatsCollectionModel.create(
         spider_job_id=spider_job_id,
+        scrapyd_server_id=scrapyd_server_id,
         project=project,
         spider=spider,
         item_scraped_count=item_scraped_count,
@@ -53,10 +55,12 @@ def list_item():
 
     order_prop = request.json.get("order_prop")
     order_type = request.json.get("order_type")  # descending, ascending
+    scrapyd_server_id = request.json.get("scrapydServerId")
 
     return {
         'list': StatsCollectionService.list(
             page=page, size=size,
+            scrapyd_server_id=scrapyd_server_id,
             project=project, spider=spider,
             order_prop=order_prop, order_type=order_type
         ),
@@ -68,5 +72,10 @@ def list_item():
 def delete():
     project = request.json.get("project")
     spider = request.json.get("spider")
+    scrapyd_server_id = request.json.get("scrapydServerId")
 
-    StatsCollectionService.delete(project=project, spider=spider)
+    StatsCollectionService.delete(
+        project=project,
+        scrapyd_server_id=scrapyd_server_id,
+        spider=spider
+    )

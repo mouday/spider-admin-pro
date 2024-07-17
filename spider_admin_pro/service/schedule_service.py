@@ -108,11 +108,15 @@ class ScheduleService(object):
                      status=None,
                      project=None,
                      spider=None,
-                     schedule_job_id=None):
+                     schedule_job_id=None,
+                     scrapyd_server_id=None
+                     ):
         """调度日志列表"""
 
         query = ScheduleHistoryModel.select()
 
+        if scrapyd_server_id:
+            query = query.where(ScheduleHistoryModel.scrapyd_server_id == scrapyd_server_id)
         if project:
             query = query.where(ScheduleHistoryModel.project == project)
         if spider:
@@ -136,13 +140,15 @@ class ScheduleService(object):
                                 status=None,
                                 project=None,
                                 spider=None,
+                                scrapyd_server_id=None,
                                 schedule_job_id=None):
         """获取调度日志和运行日志"""
 
         rows = cls.get_log_list(
             page=page, size=size, status=status,
             project=project, spider=spider,
-            schedule_job_id=schedule_job_id
+            schedule_job_id=schedule_job_id,
+            scrapyd_server_id=scrapyd_server_id
         )
 
         # 关联schedule
@@ -179,9 +185,12 @@ class ScheduleService(object):
         return rows
 
     @classmethod
-    def get_log_total_count(cls, project=None, spider=None, schedule_job_id=None):
+    def get_log_total_count(cls, project=None, spider=None, schedule_job_id=None, scrapyd_server_id=None):
         """计算日志总条数"""
         query = ScheduleHistoryModel.select()
+
+        if scrapyd_server_id:
+            query = query.where(ScheduleHistoryModel.scrapyd_server_id == scrapyd_server_id)
 
         if project:
             query = query.where(ScheduleHistoryModel.project == project)
@@ -195,9 +204,12 @@ class ScheduleService(object):
         return query.count()
 
     @classmethod
-    def get_log_success_count(cls, project=None, spider=None, schedule_job_id=None):
+    def get_log_success_count(cls, project=None, spider=None, schedule_job_id=None, scrapyd_server_id=None):
         """计算成功日志条数"""
         query = ScheduleHistoryModel.select()
+
+        if scrapyd_server_id:
+            query = query.where(ScheduleHistoryModel.scrapyd_server_id == scrapyd_server_id)
 
         if project:
             query = query.where(ScheduleHistoryModel.project == project)
@@ -212,9 +224,12 @@ class ScheduleService(object):
         return query.count()
 
     @classmethod
-    def get_log_error_count(cls, project=None, spider=None, schedule_job_id=None):
+    def get_log_error_count(cls, project=None, spider=None, schedule_job_id=None, scrapyd_server_id=None):
         """计算失败日志条数"""
         query = ScheduleHistoryModel.select()
+
+        if scrapyd_server_id:
+            query = query.where(ScheduleHistoryModel.scrapyd_server_id == scrapyd_server_id)
 
         if project:
             query = query.where(ScheduleHistoryModel.project == project)
@@ -229,9 +244,12 @@ class ScheduleService(object):
         return query.count()
 
     @classmethod
-    def remove_log(cls, project=None, spider=None, schedule_job_id=None, status=None):
+    def remove_log(cls, project=None, spider=None, schedule_job_id=None, status=None, scrapyd_server_id=None):
         """移除日志"""
         query = ScheduleHistoryModel.delete()
+
+        if scrapyd_server_id:
+            query = query.where(ScheduleHistoryModel.scrapyd_server_id == scrapyd_server_id)
 
         if project:
             query = query.where(ScheduleHistoryModel.project == project)

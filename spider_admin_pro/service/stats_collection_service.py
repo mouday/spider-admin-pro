@@ -13,7 +13,8 @@ class StatsCollectionService(object):
     @classmethod
     def list(cls, page=1, size=20,
              project=None, spider=None,
-             order_prop=None, order_type=None
+             order_prop=None, order_type=None,
+             scrapyd_server_id=None
              ):
         """
 
@@ -28,6 +29,10 @@ class StatsCollectionService(object):
         query = StatsCollectionModel.select()
 
         # 查询条件
+        if scrapyd_server_id:
+            query = query.where(StatsCollectionModel.scrapyd_server_id == scrapyd_server_id)
+
+
         if project:
             query = query.where(StatsCollectionModel.project == project)
 
@@ -60,8 +65,11 @@ class StatsCollectionService(object):
         return rows
 
     @classmethod
-    def count(cls, project=None, spider=None):
+    def count(cls, project=None, spider=None, scrapyd_server_id=None ):
         query = StatsCollectionModel.select()
+
+        if scrapyd_server_id:
+            query = query.where(StatsCollectionModel.scrapyd_server_id == scrapyd_server_id)
 
         if project:
             query = query.where(StatsCollectionModel.project == project)
@@ -72,8 +80,11 @@ class StatsCollectionService(object):
         return query.count()
 
     @classmethod
-    def delete(cls, project=None, spider=None):
+    def delete(cls, project=None, spider=None, scrapyd_server_id=None):
         query = StatsCollectionModel.delete()
+
+        if scrapyd_server_id:
+            query = query.where(StatsCollectionModel.scrapyd_server_id == scrapyd_server_id)
 
         if project:
             query = query.where(StatsCollectionModel.project == project)
