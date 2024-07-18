@@ -367,35 +367,7 @@ yum install libffi-devel -y
 
 ## 更新日志
 
-- v2.0.3
-    - 修复mysql作为后端存储的文档和登录bug
-
-- v2.0.2
-    - 优化文档
-    - 优化日志
-
-- v2.0.1
-    - 优化前端界面在windows平台显示异常的问题
-    - 修复前端调度日志 列表显示异常的问题
-    - 优化定时任务添加，自动选中项目和爬虫 
-
-- v2.0.0
-    - 升级依赖 requirements.txt， Flask 1.0.3 升级为 2.2.2
-    - 优化启动方式
-    - 优化启动配置,移除`PORT` 和`HOST` 配置项
-    - 移除.env环境变量配置，简化配置流程
-    - 移除Flask配置读取，推荐使用`gunicorn`启动服务
-
-- 2021-09-03 
-    - [bugfix]修复【任务列表】运行中项目无法取消的bug
-
-- 2022-04-01 
-    - [bugfix] 当修改scrapyd的端口号后，在配置文件中指定scrapyd为修改后的端口号。配置文件不生效
-    - 感谢：@洒脱的狂者 发现的问题及解决办法
-
-- 2022-05-27 
-    - [update] requirements.txt 文件中增加 flask_cors 依赖
-
+[CHANGELOG.md](./CHANGELOG.md)
 
 ## 社区其他优秀工具推荐
 
