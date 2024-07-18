@@ -9,6 +9,7 @@ from flask import request
 
 # from spider_admin_pro.flask_app import BlueprintAppApi
 from spider_admin_pro.model.stats_collection_model import StatsCollectionModel
+from spider_admin_pro.service import schedule_history_service
 from spider_admin_pro.service.stats_collection_service import StatsCollectionService
 from spider_admin_pro.utils.flask_ext.flask_app import BlueprintAppApi
 
@@ -20,7 +21,6 @@ def add_item():
     pprint(request.json)
 
     spider_job_id = request.json['job_id']
-    scrapyd_server_id = request.json['scrapydServerId']
     project = request.json['project']
     spider = request.json['spider']
     item_scraped_count = request.json['item_scraped_count']
@@ -30,6 +30,13 @@ def add_item():
     duration = request.json['duration']
     finish_reason = request.json['finish_reason']
     log_error_count = request.json['log_error_count']
+
+    # 查询 scrapyd_server_id
+    schedule_history_row = schedule_history_service.get_schedule_history_service_by_job_id(job_id=spider_job_id)
+    if schedule_history_row:
+        scrapyd_server_id = schedule_history_row.scrapyd_server_id
+    else:
+        scrapyd_server_id = 0
 
     StatsCollectionModel.create(
         spider_job_id=spider_job_id,

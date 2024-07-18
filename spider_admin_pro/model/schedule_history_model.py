@@ -14,10 +14,13 @@ class ScheduleHistoryModel(BaseModel):
 
     project = CharField(max_length=32)
     spider = CharField(max_length=64)
+
+    # 运行任务id
     spider_job_id = CharField(max_length=32)
     options = CharField()
     message = CharField()
 
+    # 定时任务id
     schedule_job_id = CharField(max_length=32)
 
     create_time = DateTimeField(default=datetime.now)
