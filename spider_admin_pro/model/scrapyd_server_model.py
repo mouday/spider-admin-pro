@@ -11,7 +11,9 @@ from spider_admin_pro.model.base import BaseModel
 
 
 class ScrapydServerModel(BaseModel):
-    """scrapyd 配置"""
+    """scrapyd 配置
+    @since v3.0
+    """
     id = IntegerField(primary_key=True)
 
     server_url = CharField()

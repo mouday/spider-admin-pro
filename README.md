@@ -23,6 +23,16 @@ Spider Admin Pro 是[Spider Admin](https://github.com/mouday/SpiderAdmin)的升�
 
 ![](https://github.com/mouday/spider-admin-pro/raw/master/doc/img/spider-admin-pro.png)
 
+## v3.0 和 v2.0
+
+> 注意：v3.0 和 v2.0版本不兼容，无法平滑迁移
+
+- v3.0 版本支持多Scrapyd
+- v2.0 版本仅支持一个Scrapyd
+
+- [Spider Admin Pro V2版本文档看这里](README-v2.md)
+- [Spider Admin Pro V1版本文档看这里](README-v1.md)
+
 ## 安装启动
 
 本项目基于Python3.7.0 开发，所以推荐使用Python3.7.0及其以上版本
@@ -91,11 +101,6 @@ docker run -e TZ=Asia/Shanghai -p 8000:8000 -v ./config.yml:/app/config.yml moud
 
 ## 配置参数
 
-> - v2.0版本移除了`.env`环境变量配置方式，仅支持yaml格式配置
-> - v2.0版本移除了`PORT`和`HOST`配置项，推荐统一采用gunicorn 管理
-
-[Spider Admin Pro V1版本文档看这里](README-v1.md)
-
 自定义配置
 
 在运行目录下新建`config.yml` 文件，也就是执行启动命令的目录，运行时会自动读取该配置文件
@@ -116,15 +121,17 @@ eg:
 USERNAME: admin
 PASSWORD: "123456"
 
-# scrapyd地址, 结尾不要加斜杆
-SCRAPYD_SERVER: "http://127.0.0.1:6800"
-
-# 【可选】支持 basic auth @since 2.0.8 
-SCRAPYD_USERNAME: ''
-SCRAPYD_PASSWORD: ''
-
 # 【可选】是否开开启前端静态文件预压缩以提升页面加载速度，默认为True
 COMPRESS_STATIC: True
+
+# 以下配置在v3.0不支持
+# scrapyd地址, 结尾不要加斜杆
+# SCRAPYD_SERVER: "http://127.0.0.1:6800"
+
+# 【可选】支持 basic auth @since 2.0.8 
+# SCRAPYD_USERNAME: ''
+# SCRAPYD_PASSWORD: ''
+
 ```
 
 ## 使用扩展
