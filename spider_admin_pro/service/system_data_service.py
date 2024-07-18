@@ -1,15 +1,20 @@
 # -*- coding: utf-8 -*-
-
-
+from spider_admin_pro.model import ScrapydServerModel
+from spider_admin_pro.service import scrapyd_server_service
 from spider_admin_pro.service.schedule_service import scheduler
-from spider_admin_pro.service.scrapyd_service import ScrapydService
+from spider_admin_pro.service.scrapyd_service import ScrapydService, get_client
 from spider_admin_pro.utils.system_info_util import SystemInfoUtil
 from spider_admin_pro.version import VERSION
 
 
 class SystemDataService(object):
     @classmethod
-    def get_system_data(cls):
+    def get_system_data(cls, scrapyd_server_id=None):
+        if scrapyd_server_id:
+            scrapyd_server_row = ScrapydServerModel.get_by_id(scrapyd_server_id)
+
+            client = get_client(scrapyd_server_row)
+
         try:
             res = client.daemon_status()
         except Exception:
@@ -56,13 +61,15 @@ class SystemDataService(object):
 
     @classmethod
     def get_system_config(cls):
+        available_scrapyd_server_count = scrapyd_server_service.get_available_scrapyd_server_count()
 
         return {
             'scrapyd': {
                 # 'url': SCRAPYD_SERVER,
-                'url': '',
                 # 'status': ScrapydService.get_status()
-                'status': False
+                'url': '',
+                'count': available_scrapyd_server_count,
+                'status': available_scrapyd_server_count > 0
             },
             'spider_admin': {
                 'version': VERSION

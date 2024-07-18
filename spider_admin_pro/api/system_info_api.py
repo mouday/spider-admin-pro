@@ -25,7 +25,8 @@ def get_system_info():
 
 @system_api.post("/systemData")
 def get_system_data():
-    return SystemDataService.get_system_data()
+    scrapyd_server_id = request.json['scrapydServerId']
+    return SystemDataService.get_system_data(scrapyd_server_id=scrapyd_server_id)
 
 
 @system_api.post("/systemConfig")
