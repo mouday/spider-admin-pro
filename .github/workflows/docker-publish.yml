@@ -30,7 +30,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: 'mouday/spider-admin-pro'
-          ref: 'master'
+          ref: 'v3.0'
           path: 'spider_admin_pro'
 
       # 拉取web前端dist的代码
