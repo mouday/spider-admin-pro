@@ -34,7 +34,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: 'mouday/spider-admin-pro-web'
-          ref: 'master'
+          ref: 'v3.0'
           token: ${{ secrets.GH_PAT }}
           path: 'spider_admin_pro_web'
 
