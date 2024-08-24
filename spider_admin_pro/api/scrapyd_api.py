@@ -3,7 +3,7 @@
 # scrapyd 接口服务
 # ==============================================
 
-from flask import request
+from flask import request, Response
 
 from spider_admin_pro.model import ScrapydServerModel
 from spider_admin_pro.utils.flask_ext.flask_app import BlueprintAppApi
@@ -209,4 +209,5 @@ def job_log():
 
     client = get_client(scrapyd_server_row)
 
-    return client.job_log(project=project, spider=spider, job=job)
+    res = client.job_log(project=project, spider=spider, job=job)
+    return Response(res, content_type='text/plain;charset=utf-8')
