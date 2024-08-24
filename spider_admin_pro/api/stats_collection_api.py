@@ -32,7 +32,7 @@ def add_item():
     log_error_count = request.json['log_error_count']
 
     # 查询 scrapyd_server_id
-    schedule_history_row = schedule_history_service.get_schedule_history_service_by_job_id(job_id=spider_job_id)
+    schedule_history_row = schedule_history_service.get_schedule_history_service_by_job_id(spider_job_id=spider_job_id)
     if schedule_history_row:
         scrapyd_server_id = schedule_history_row.scrapyd_server_id
     else:
