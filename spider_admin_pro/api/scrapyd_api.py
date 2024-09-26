@@ -129,11 +129,13 @@ def schedule():
     project = request.json['project']
     spider = request.json['spider']
     scrapyd_server_id = request.json['scrapydServerId']
+    options = request.json['options']
 
     kwargs = {
         'project': project,
         'spider': spider,
-        'scrapyd_server_id': scrapyd_server_id
+        'scrapyd_server_id': scrapyd_server_id,
+        'options': options
     }
 
     # fix: 记录手动运行日志
