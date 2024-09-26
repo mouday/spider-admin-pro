@@ -1,3 +1,6 @@
+- v3.0.7(2024-09-26)
+    - fix scrapyd_api.py /schedule miss out options (#21)
+
 - v3.0.6(2024-08-24)
     - 修复日志乱码问题
 
