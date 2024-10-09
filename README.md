@@ -254,8 +254,8 @@ Scrapyd 不能直接暴露在外网
 
 ## 项目赞助
 
-| 日期 | 姓名 | 金额 | 
-| - | - | - |
+| 日期         | 姓名 | 金额 | 
+|------------| - | - |
 | 2022-04-16 | [@realhellosunsun](https://github.com/realhellosunsun) | ￥188.00
 | 2022-08-30 | [@yangxiaozhe13](https://github.com/yangxiaozhe13) | ￥88.00
 | 2022-09-01 | [@robot-2233](https://github.com/robot-2233) | ￥88.00
@@ -275,6 +275,7 @@ Scrapyd 不能直接暴露在外网
 | 2024-02-20 | [@ning-0217](https://github.com/ning-0217) | ￥50.00
 | 2024-03-08 | [@zhaolipo](https://github.com/zhaolipo) | ￥20.00
 | 2024-03-18 | [@magiceric](https://github.com/magiceric) | ￥88.00
+| 2024-09-30 | [@dream2333](https://github.com/dream2333) | ￥100.00
 
 <img src="https://github.com/mouday/spider-admin-pro/raw/master/doc/img/alipay.jpg" width="300">
 
