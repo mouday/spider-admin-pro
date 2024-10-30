@@ -1,5 +1,5 @@
 - v3.0.8(2024-10-30)
-    - fix doc
+    - 修复点击运行 出现错误提示 #22
 
 - v3.0.7(2024-09-26)
     - fix scrapyd_api.py /schedule miss out options (#21)
