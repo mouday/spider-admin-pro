@@ -1,3 +1,6 @@
+- v3.0.8(2024-10-30)
+    - fix doc
+
 - v3.0.7(2024-09-26)
     - fix scrapyd_api.py /schedule miss out options (#21)
 
