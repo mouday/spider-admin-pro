@@ -1,5 +1,5 @@
 - v3.0.9(2024-11-01)
-    - fix
+    - 升级手动执行功能,涉及spider和定时任务两个列表页面 [#3](https://github.com/mouday/spider-admin-pro-web/pull/3)
 
 - v3.0.8(2024-10-30)
     - 修复点击运行 出现错误提示 #22
