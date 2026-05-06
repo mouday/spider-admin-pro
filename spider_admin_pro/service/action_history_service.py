@@ -62,6 +62,8 @@ class ActionHistoryService(object):
     def get_address(cls, ip):
         """获取ip地址信息"""
         info = get_info(ip)
+        if not info:
+            return ip or ''
 
         country = info['country']
         region = info['region']
