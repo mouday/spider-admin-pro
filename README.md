@@ -23,6 +23,13 @@ Spider Admin Pro 是[Spider Admin](https://github.com/mouday/SpiderAdmin)的升�
 
 ![](https://github.com/mouday/spider-admin-pro/raw/master/doc/img/spider-admin-pro.png)
 
+## 广告
+
+[![](https://mouday.github.io/img/2026/05/29/2pd77pw.png)](https://www.ipwo.net/?ref=githubmouday)
+
+爬虫总遇 403、IP 秒封？IPWO爬虫住宅代理 9000 万真实住宅 IP，黑名单率低于 3%，模拟真人访问，成功率 99%+
+IPWO爬虫代理资源为采集、跨境与测试项目提供支持(免费试用，流量不过期，爬虫使用保护账号不封号)学习者务必遵循法律！IPWO访问入口
+
 ## v3.0 和 v2.0
 
 > 注意：v3.0 和 v2.0版本不兼容，无法平滑迁移
